@@ -17,7 +17,12 @@ if (process.env.NODE_ENV === "production") {
 require('./routes/api-routes')(app);
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactNotes");
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://volunteer:vmommy1@ds031962.mlab.com:31962/heroku_58l4pc3g",
+  { useNewUrlParser: true}
+);
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactNotes");
+
 
 // Start the API server
 app.listen(PORT, function() {
