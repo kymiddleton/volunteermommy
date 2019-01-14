@@ -2,8 +2,8 @@ const db = require('../models');
 
 module.exports = function (app) {
 
-  // GET route for retrieving items from database. 
-  app.get('/api/teacher', function (req, res) {
+  // GET route: retrieving db items
+  app.get('/api/teacher', function (req, res) { //works
     db.Teacher.find({})
       .then(function (dbTeacher) {
         res.json(dbTeacher);
@@ -13,8 +13,9 @@ module.exports = function (app) {
       });
   });
 
-  // POST route to create new entry in database.
-  app.post('/api/teacher', function (req, res) {
+  // POST route: create new db entry
+  app.post('/api/teacher', function (req, res) {  //works
+    console.log('--->Adding Teacher in mongo--->');
     db.Teacher.create(req.body)
       .then(function (dbTeacher) {
         res.json(dbTeacher);
@@ -25,35 +26,24 @@ module.exports = function (app) {
   });
 
   // PUT route for updating database. 
-  app.put('/api/teacher', function (req, res) {
-    db.Teacher.findOneAndUpdate(
-      { _id: req.body.id },
-      {
-        $set: {
-          firstName: req.body.firstName,
-          middleInitial: req.body.middleInitial,
-          lastName: req.body.lastName,
-          grade: req.body.grade, //array
-        }
-      })
-      .then(function (dbTeacher) {
-        res.json(dbTeacher);
-      })
-      .catch(function (err) {
-        res.json(err);
-      });
+  app.put('/api/teacher/:id', function (req, res) { //works
+    console.log('----> updating Teacher <----');
+    db.Teacher.findByIdAndUpdate({ _id: req.params.id }, req.body).then(function () {
+      db.Teacher.findOne({ _id: req.params.id })
+        .then(function (dbTeacher) {
+          res.send(dbTeacher);
+        })
+        .catch(function (err) {
+          res.json(err);
+        });
+    })
   });
 
   // DELETE item from database
-  app.delete('/api/teacher/:teacher_id', function (req, res) {
-    db.Teacher.findByIdAndRemove(req.params.teacher_id, function (err, teacher) {
-      if (err) return res.status(500).send(err);
-      // We'll create an object to send back with a message and id of the removed document.
-      const response = {
-        message: "Item successfully deleted",
-        id: teacher._id
-      };
-      return res.status(200).send(response);
+  app.delete('/api/teacher/:id', function (req, res) { //works
+    console.log('---deleting teacher---');
+    db.Teacher.findByIdAndDelete({_id: req.params.id}).then(function(dbTeacher) {
+      res.send(dbTeacher);
     });
   });
 
