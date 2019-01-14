@@ -24,7 +24,7 @@ const ChildSchema = new Schema({
         required: "Last Name is required"
     },
     grade: {
-        type: Array,
+        type: String,
         required: "Selection Required"
     },
     teacher: {
@@ -32,7 +32,8 @@ const ChildSchema = new Schema({
         required: "Selection Required",
     },
     parent: {
-        relationship: Array,
+        type: Array,
+        trim: true,
     }
 });
 

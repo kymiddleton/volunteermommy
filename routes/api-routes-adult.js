@@ -2,7 +2,7 @@ const db = require('../models');
 
 module.exports = function (app) {
 
-  // GET route for retrieving items from database. 
+  // GET route: retrieving db items
   app.get('/api/adult', function (req, res) { //Works
     db.Adult.find({})
       .then(function (dbAdult) {
@@ -13,9 +13,9 @@ module.exports = function (app) {
       });
   });
 
-  // POST route to create new entry in database.
+  // POST route: create new db entry
   app.post('/api/adult', function (req, res) { //Works
-    console.log('--->Adding Link in mongo--->');
+    console.log('--->Adding Adult in mongo--->');
     db.Adult.create(req.body)
       .then(function (dbAdult) {
         res.json(dbAdult);
@@ -27,7 +27,7 @@ module.exports = function (app) {
 
   // PUT route for updating adult details. 
   app.put('/api/adult/:id', function (req, res) { //Works
-    console.log('----> updating <----');
+    console.log('----> updating Adult <----');
     db.Adult.findByIdAndUpdate({ _id: req.params.id }, req.body).then(function(){
       db.Adult.findOne({_id: req.params.id})
       .then(function(dbAdult){
@@ -41,7 +41,7 @@ module.exports = function (app) {
 
   // DELETE adult from database
   app.delete('/api/adult/:id', function (req, res) { //works
-    console.log('---deleting---');
+    console.log('---deleting Adult---');
     db.Adult.findByIdAndDelete({_id: req.params.id}).then(function(dbAdult) {
       res.send(dbAdult);
     });
