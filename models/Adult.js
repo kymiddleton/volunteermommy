@@ -32,18 +32,21 @@ const AdultSchema = new Schema({
         required: "Valid Email Address is Required"
     },
     phoneNumber: {
-        type: Number,
+        type: String,
         trim: true,
+        minlength: 10,
         required: "Valid Phone Number is Required",
         validate: {
             validator: function(v) {
-            return /\d{3}[.-]\d{3}[.-]\d{4}/.test(v);
+            return /\d{3}-\d{3}-\d{4}/.test(v);
             },
         message: '{VALUE} is not a valid 10 digit number!'
         }
     },
     children: {
-        relationship: Array,
+        type: Array,
+        trim: true,
+        required: "Please enter relationship to enrolled student"
     }
 });
 

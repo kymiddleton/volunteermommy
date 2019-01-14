@@ -3,7 +3,7 @@ const db = require('../models');
 module.exports = function (app) {
 
   // GET route for retrieving items from database. 
-  app.get('/api/adult', function (req, res) {
+  app.get('/api/adult', function (req, res) { //Works
     db.Adult.find({})
       .then(function (dbAdult) {
         res.json(dbAdult);
@@ -14,7 +14,8 @@ module.exports = function (app) {
   });
 
   // POST route to create new entry in database.
-  app.post('/api/adult', function (req, res) {
+  app.post('/api/adult', function (req, res) { //Works
+    console.log('--->Adding Link in mongo--->');
     db.Adult.create(req.body)
       .then(function (dbAdult) {
         res.json(dbAdult);
@@ -25,38 +26,24 @@ module.exports = function (app) {
   });
 
   // PUT route for updating adult details. 
-  app.put('/api/adult', function (req, res) {
-    db.Adult.findOneAndUpdate(
-      { _id: req.body.id },
-      {
-        $set: {
-          firstName: req.body.firstName,
-          middleInitial: req.body.middleInitial,
-          lastName: req.body.lastName,
-          email: req.body.email,
-          phoneNumber: req.body.phoneNumber, //number
-          children: req.body.children //array
-        }
-      })
-      .then(function (dbAdult) {
-        res.json(dbAdult);
+  app.put('/api/adult/:id', function (req, res) { //Works
+    console.log('----> updating <----');
+    db.Adult.findByIdAndUpdate({ _id: req.params.id }, req.body).then(function(){
+      db.Adult.findOne({_id: req.params.id})
+      .then(function(dbAdult){
+        res.send(dbAdult);
       })
       .catch(function (err) {
         res.json(err);
       });
+    })
   });
 
   // DELETE adult from database
-  app.delete('/api/adult/:adult_id', function (req, res) {
-    db.Adult.findByIdAndRemove(req.params.adult_id, function (err, adult) {
-      if (err) return res.status(500).send(err);
-      // We'll create a simple object to send back with a message and the id of the document that was removed
-      const response = {
-        message: "Link successfully deleted",
-        id: adult._id
-      };
-      return res.status(200).send(response);
+  app.delete('/api/adult/:id', function (req, res) { //works
+    console.log('---deleting---');
+    db.Adult.findByIdAndDelete({_id: req.params.id}).then(function(dbAdult) {
+      res.send(dbAdult);
     });
   });
-
 }
