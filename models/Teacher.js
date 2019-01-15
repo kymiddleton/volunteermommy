@@ -11,11 +11,6 @@ const TeacherSchema = new Schema({
         lowercase: true,
         required: "First Name is Required"
     },
-    middleInitial: {
-        type: String,
-        trim: true,
-        lowercase: true,
-    },
     lastName: {
         type: String,
         trim: true,
