@@ -1,22 +1,24 @@
-import React from 'react';
+import React, { Component } from 'react';
+
 
 import Header from './components/Header/Header';
-
-
+import AdultContainer from './containers/AdultContainer.js';
 
 // import * as $ from 'axios';
+// import axios from 'axios';
 import './App.css';
 
 
 
-class App extends React.Component {
+class App extends Component {
 
 
   render() {
     return (
     <div>
       <Header />
-      <h1>My App</h1>
+      <h1>Adult Volunteer</h1>
+      <AdultContainer></AdultContainer>
       
       
       
