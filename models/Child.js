@@ -11,12 +11,6 @@ const ChildSchema = new Schema({
         lowercase: true,
         required: "First Name is Required"
     },
-    middleInitial: {
-        type: String,
-        trim: true,
-        lowercase: true,
-        required: "Middle Initial is Required"
-    },
     lastName: {
         type: String,
         trim: true,
@@ -31,10 +25,11 @@ const ChildSchema = new Schema({
         type: Array,
         required: "Selection Required",
     },
-    parent: {
-        type: Array,
-        trim: true,
-    }
+    parent: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Adult'
+        }
+    ]
 });
 
 // This creates our model from the above schema, using Mongoose's model method

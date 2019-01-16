@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  padding: 10px 10px 10px 10px;
 }
 
 body {
@@ -8,17 +9,17 @@ body {
 
 .header {
   width: 100%;
-  height: 150px;
+  height: 100px;
   text-align: left;
   background-color: #0654b4;
   padding-left: 35px;
-  padding-top: 25px;
-  padding-bottom: 50px;
-  font: 40px;
+  padding-top: 20px;
+  padding-bottom: 25px;
+  /* font: 40px; */
   text-align: left;
 }
 
 .logo {
   width: auto;
-  height: 110px;
+  height: 100px;
 }

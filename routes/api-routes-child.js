@@ -5,6 +5,7 @@ module.exports = function (app) {
     // GET route: retrieving db items
     app.get('/api/child', function (req, res) { //Works
         db.Child.find({})
+        .populate('Adult')
             .then(function (dbChild) {
                 res.json(dbChild);
             })

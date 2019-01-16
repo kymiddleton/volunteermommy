@@ -11,12 +11,6 @@ const AdultSchema = new Schema({
         lowercase: true,
         required: "First Name is Required"
     },
-    middleInitial: {
-        type: String,
-        trim: true,
-        lowercase: true,
-        required: "Middle Initial is Required"
-    },
     lastName: {
         type: String,
         trim: true,
@@ -43,11 +37,13 @@ const AdultSchema = new Schema({
         message: '{VALUE} is not a valid 10 digit number!'
         }
     },
-    children: {
-        type: Array,
+    children: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Child',
         trim: true,
-        required: "Please enter relationship to enrolled student"
-    }
+        }
+    ]
+    
 });
 
 // This creates our model from the above schema, using Mongoose's model method

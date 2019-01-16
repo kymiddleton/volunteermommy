@@ -5,21 +5,13 @@ const Schema = mongoose.Schema;
 
 // Using the Schema constructor, create a new Schema object
 const TeacherSchema = new Schema({
-    firstName: {
+    fullName: {
         type: String,
         trim: true,
         lowercase: true,
-        required: "First Name is Required"
-    },
-    lastName: {
-        type: String,
-        trim: true,
-        lowercase: true,
-        required: "Last Name is required"
     },
     grade: {
         type: Array,
-        required: "Selection Required"
     }
 });
 
