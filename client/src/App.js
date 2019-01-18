@@ -5,7 +5,7 @@ import Header from './components/Header/Header';
 import AdultContainer from './containers/AdultContainer.js';
 
 // import * as $ from 'axios';
-// import axios from 'axios';
+
 import './App.css';
 
 

@@ -19,6 +19,7 @@ module.exports = function (app) {
     console.log('--->Adding Adult in mongo--->');
     db.Adult.create(req.body)
       .then(function (dbAdult) {
+        console.log('haha')
         res.json(dbAdult);
       })
       .catch(function (err) {
@@ -27,23 +28,23 @@ module.exports = function (app) {
   });
 
   //POST: Find Adults & Children route
-  app.post('/api/adult', function (req, res) { 
-    console.log('--->Adding Adult in mongo--->');
-    const adultId = req.body.adultId;
-    const newChild = {
-      name: req.body.name,
-      grade: req.body.grade,
-      teacher: req.body.teacher,
-      parent: req.body.parent
-    }
-    db.Child.create(newChild)
-      .then(function (childData) {
-        return Adult.findOneAndUpdate({_id: adultId}, { $push: {children: childData._id } }, { new: true});
-      })
-      .catch(function (err) {
-        res.json(err);
-      });
-  });
+  // app.post('/api/adult', function (req, res) { 
+  //   console.log('--->Adding Adult in mongo--->');
+  //   const adultId = req.body.adultId;
+  //   const newChild = {
+  //     name: req.body.name,
+  //     grade: req.body.grade,
+  //     teacher: req.body.teacher,
+  //     parent: req.body.parent
+  //   }
+  //   db.Child.create(newChild)
+  //     .then(function (childData) {
+  //       return Adult.findOneAndUpdate({_id: adultId}, { $push: {children: childData._id } }, { new: true});
+  //     })
+  //     .catch(function (err) {
+  //       res.json(err);
+  //     });
+  // });
 
 
   // PUT route for updating adult details. 

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
+import * as $ from 'axios';
 
 /* Import Components */
 import Input from "../components/Input";
 import Select from "../components/Select";
 import Button from "../components/Button";
-import axios from "axios";
 
 class AdultContainer extends Component {
     constructor(props) {
@@ -22,20 +22,17 @@ class AdultContainer extends Component {
             childrenOptions: ["Parent", "Grandparent", "Relative", "Caregiver"]
         };
 
-
         this.handleFirstName = this.handleFirstName.bind(this);
         this.handleLastName = this.handleLastName.bind(this);
         this.handleEmail = this.handleEmail.bind(this);
         this.handlePhoneNumber = this.handlePhoneNumber.bind(this);
-
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.handleClearForm = this.handleClearForm.bind(this);
         this.handleInput = this.handleInput.bind(this);
-
     }
 
-
     handleFirstName(event) {
+        event.preventDefault();
         let value = event.target.value;
         this.setState(
             prevState => ({
@@ -46,9 +43,10 @@ class AdultContainer extends Component {
             }),
             () => console.log(this.state.newAdult)
         );
-    }
-
+    };
+    
     handleLastName(event) {
+        event.preventDefault();
         let value = event.target.value;
         this.setState(
             prevState => ({
@@ -57,11 +55,11 @@ class AdultContainer extends Component {
                     lastName: value
                 }
             }),
-            () => console.log(this.state.newAdult)
         );
     }
 
     handleEmail(event) {
+        event.preventDefault();
         let value = event.target.value;
         this.setState(
             prevState => ({
@@ -70,11 +68,11 @@ class AdultContainer extends Component {
                     email: value
                 }
             }),
-            () => console.log(this.state.newAdult)
         );
     }
 
     handlePhoneNumber(event) {
+        event.preventDefault();
         let value = event.target.value;
         this.setState(
             prevState => ({
@@ -83,53 +81,33 @@ class AdultContainer extends Component {
                     phoneNumber: value
                 }
             }),
-            () => console.log(this.state.newAdult)
         );
     }
 
     handleInput(event) {
+        event.preventDefault();
         let value = event.target.value;
-        let firstName = event.target.firstName;
-        let lastName = event.target.lastName;
-        let email = event.target.email;
-        let phoneNumber = event.target.phoneNumber;
+        let child = event.target.child;
         this.setState(
             prevState => ({
                 newAdult: {
                     ...prevState.newAdult,
-                    [firstName]: value,
-                    [lastName]: value,
-                    [email]: value,
-                    [phoneNumber]: value,
+                    [child]: value
                 }
             }),
-            () => console.log(this.state.newAdult)
         );
     }
-
 
     handleFormSubmit(event) {
         event.preventDefault();
         let adultData = this.state.newAdult;
+        console.log(adultData);
     
-        axios.post('/api/adult', {adultData})
+        $.post('/api/adult', adultData)
         .then(res => {
             console.log(res);
             console.log(res.data);
         })
-        
-        // fetch("http://example.com", {
-        //   method: "POST",
-        //   body: JSON.stringify(adultData),
-        //   headers: {
-        //     Accept: "application/json",
-        //     "Content-Type": "application/json"
-        //   }
-        // }).then(response => {
-        //   response.json().then(data => {
-        //     console.log("Successful" + data);
-        //   });
-        // });
     }
 
     handleClearForm(event) {
@@ -145,40 +123,39 @@ class AdultContainer extends Component {
         });
     }
     
-
     render () {
         return (
             <form onSubmit={this.handleFormSubmit} >
                 <Input
-                    inputType={"text"}
-                    firstName={"First Name"}
+                    type={"text"}
+                    firstname={"First Name"}
                     value={this.state.newAdult.firstName}
                     placeholder={"Enter First Name"}
-                    handleChange={this.handleInput}
+                    handleChange={this.handleFirstName}
                 />{""}
                 {/* End newAdult firstName Field*/}
                 <Input
-                    inputType={"text"}
+                    type={"text"}
                     lastName={"First Name"}
                     value={this.state.newAdult.lastName}
                     placeholder={"Enter Last Name"}
-                    handleChange={this.handleInput}
+                    handleChange={this.handleLastName}
                 />{""}
                 {/* End newAdult lastName Field*/}
                 <Input
-                    inputType={"text"}
+                    type={"text"}
                     email={"Email"}
                     value={this.state.newAdult.email}
                     placeholder={"Enter Valid Email"}
-                    handleChange={this.handleInput}
+                    handleChange={this.handleEmail}
                 />{""}
                 {/* End newAdult email Field*/}
                 <Input
-                    inputType={"number"}
+                    type={"text"}
                     phoneNumber={"Phone"}
                     value={this.state.newAdult.phoneNumber}
                     placeholder={"Enter Phone Number"}
-                    handleChange={this.handleInput}
+                    handleChange={this.handlePhoneNumber}
                 />{""}
                 {/* End newAdult email Field*/}
                 <Select
@@ -204,8 +181,7 @@ class AdultContainer extends Component {
                     style={buttonStyle}
                 />{" "}
                 {/* End newAdult Clear Form */}
-            </form>
-            
+            </form> 
         );
     }
 }

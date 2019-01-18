@@ -1,25 +1,24 @@
 import React from "react";
 
-const Input = props => {
+const Input = (props) => {
   //console.log(props.value);
   return (
     <div className="form-group">
-      <label htmlFor={props.name} className="form-label">
+      <label htmlFor={props.newAdult} className="form-label">
         {props.title}
       </label>
-      <Input
-        id={props.name}
-        firstname={props.firstName}
-        lastname={props.lastName}
-        email={props.email}
-        phonenumber={props.phonenumber}
+      <input 
+        id={props.id}
+        // firstname={props.firstname}
+        // lastname={props.lastName}
+        // email={props.email}
+        // phonenumber={props.phonenumber}
         name={props.name}
-        type={props.inputType}
+        input={props.input}
         value={props.value}
         onChange={props.handleChange}
         placeholder={props.placeholder}
-        {...props}
-      />
+        ></input>
     </div>
   );
 };
