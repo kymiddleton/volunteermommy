@@ -17,10 +17,10 @@ const ChildSchema = new Schema({
         lowercase: true,
         required: "Last Name is required"
     },
-    grade: {
-        type: String,
-        required: "Selection Required"
-    },
+    // grade: {
+    //     type: String,
+    //     required: "Selection Required"
+    // },
     teacher: {
         type: Array,
         required: "Selection Required",

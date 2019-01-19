@@ -1,6 +1,6 @@
 import React from "react";
 
-const Select = props => {
+const SelectChild = props => {
   return (
     <div className="form-group">
       <label htmlFor={props.name}> {props.title} </label>
@@ -16,12 +16,12 @@ const Select = props => {
         {props.options.map(option => {
           return (
             <option 
-            key={option} 
-            value={option} 
-            label={option}
+            key={option.fullName} 
+            value={option.fullName} 
+            label={option.fullName}
             > 
             
-            {option} 
+            {option.fullName} 
             
             </option>
           );
@@ -31,4 +31,4 @@ const Select = props => {
   );
 };
 
-export default Select;
+export default SelectChild;

@@ -108,6 +108,7 @@ class AdultContainer extends Component {
             console.log(res);
             console.log(res.data);
         })
+        this.props.toggleChild();
     }
 
     handleClearForm(event) {
@@ -158,6 +159,7 @@ class AdultContainer extends Component {
                     handleChange={this.handlePhoneNumber}
                 />{""}
                 {/* End newAdult email Field*/}
+            
                 <Select
                     title={"Children"}
                     name={"Relationship to Enrolled Child(ren)"}
@@ -165,26 +167,30 @@ class AdultContainer extends Component {
                     value={this.state.newAdult.children}
                     placeholder={"Select Relationship"}
                     handleChange={this.handleInput}
-                    />{" "}
+                    />
                 {/* End Child Relationship Selection Field */}
                 <Button
                     action={this.handleFormSubmit}
                     type={"primary"}
                     title={"Submit"}
                     style={buttonStyle}
-                />{" "}
+                />
                 {/* End newAdult Submit */}
                 <Button
                     action={this.handleClearForm}
                     type={"secondary"}
                     title={"Clear"}
                     style={buttonStyle}
-                />{" "}
+                />
                 {/* End newAdult Clear Form */}
+                
+            
             </form> 
         );
     }
 }
+//Conditional rendering.  Once Adult record submitted, the option to add a child appears. 
+//Show child property on state, defualt to false
 
 const buttonStyle = {
     margin: "10px 10px 10px 10px"

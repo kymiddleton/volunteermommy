@@ -13,17 +13,31 @@ import './App.css';
 
 class App extends Component {
 
+  state = {
+    showChild: false
+  }
+
+
+  toggleChild () {
+    
+    this.setState(
+      {showChild: true}
+    )
+  }
+
 
   render() {
     return (
     <div>
       <Header />
       <h1>Adult Volunteer</h1>
-      <AdultContainer></AdultContainer>
+      <AdultContainer toggleChild={()=>this.toggleChild()}>
+
+      </AdultContainer>
       <h1>Child of Volunteer</h1>
-      <ChildContainer></ChildContainer>
-      
-      
+      {this.state.showChild &&
+        <ChildContainer></ChildContainer>
+    }
       
     </div>
     )

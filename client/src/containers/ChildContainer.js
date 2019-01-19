@@ -4,7 +4,7 @@ import * as $ from 'axios';
 /* Import Components */
 import Input from "../components/Input";
 // import Select from "../components/Select";
-// import SelectChild from "../components/SelectChild";
+import SelectChild from "../components/SelectChild";
 import Button from "../components/Button";
 
 class ChildContainer extends Component {
@@ -13,28 +13,29 @@ class ChildContainer extends Component {
         
         this.state = {
             newChild: {
-                firstName: " ",
-                lastName: " ",
+                firstName: "",
+                lastName: "",
                 grade: [],
                 teacher: [],
                 parent: []
             },
             gradeOptions: [
-                        { value: 'PS3 M-F', id: 1},
-                        { value: 'PS3 M-TH', id: 2},
-                        { value: 'PS3 T, TH', id: 3},
-                        { value: 'PS3 T, TH, F', id: 4},
-                        { value: 'PS3 M, W, F', id: 5},
-                        { value: 'PS3 M, T, TH', id: 6},
-                        { value: 'PK4 M-F', id: 7},
-                        { value: 'PK4 M, W, F', id: 8},
-                        { value: 'PK4 M-TH', id: 9},
-                        { value: 'PK4 M-TH', id: 10},
-                        { value: 'PK4 M-TH', id: 11},
-                        { value: 'PK4 M-TH', id: 12},
-                        { value: 'Kindergarten', id: 13},
+               
             ],
-            teacherOptions: [],
+            teacherOptions: [
+                { fullName: "Janet Duke", grade: "PS3 M-F" },
+                { fullName: "Julia Smith", grade: "PS3 M-TH" },
+                { fullName: "Wendy Weaver", grade: "PS3 T, TH" },
+                { fullName: "Jennifer Johnson", grade: "PS3 T, TH, F" },
+                { fullName: "Lindsay Long", grade: "PS3 M, T, TH" },
+                { fullName: "Heather Happy", grade: "PS3 M, W, F" },
+                { fullName: "Leslie Lovelace", grade: "PK4 M, W, F" },
+                { fullName: "Cindy Carebear", grade: "PK4 M-TH" },
+                { fullName: "Jennifer Beamer", grade: "PK4 M-TH" },
+                { fullName: "Teri Terrific", grade: "PK4 M-TH" },
+                { fullName: "Michelle Reck", grade: "PK4 M-TH" },
+                { fullName: "Amy Wilbanks", grade: "Kindergarten" },
+            ],
             parentOptions: [],
         };
 
@@ -43,7 +44,7 @@ class ChildContainer extends Component {
 
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.handleClearForm = this.handleClearForm.bind(this);
-        this.handleGradeInput = this.handleGradeInput.bind(this);
+        this.handleTeacherInput = this.handleTeacherInput.bind(this);
     }
 
     handleFirstName(event) {
@@ -73,7 +74,7 @@ class ChildContainer extends Component {
         );
     }
 
-    handleGradeInput(event) {
+    handleTeacherInput(event) {
         event.preventDefault();
         let value = event.target.value;
         let grade = event.target.grade;
@@ -131,14 +132,14 @@ class ChildContainer extends Component {
                     handleChange={this.handleLastName}
                 />{""}
                 {/* End newAdult lastName Field*/}
-                {/* <SelectChild
+                <SelectChild
                     title={"Teacher"}
                     name={"Teacher"}
-                    options={this.state.TeacherOptions}
+                    options={this.state.teacherOptions}
                     value={this.state.newChild.teacher}
                     placeholder={"Select Teacher"}
                     handleChange={this.handleTeacherInput}
-                    />{" "} */}
+                    />{" "}
                 {/* End Child Relationship Selection Field */}
                 <Button
                     action={this.handleFormSubmit}
