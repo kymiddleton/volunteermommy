@@ -16,7 +16,7 @@ class AdultContainer extends Component {
                 lastName: "",
                 email: "",
                 phoneNumber: "",
-                children: []
+                children: ""
             },
 
             childrenOptions: ["Parent", "Grandparent", "Relative", "Caregiver"]

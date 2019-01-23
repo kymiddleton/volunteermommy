@@ -25,6 +25,7 @@
     "express": "^4.16.3",
     "if-env": "^1.0.4",
     "mongoose": "^5.0.17",
+    "react-router-dom": "^4.3.1",
     "react-select": "^2.2.0"
   }
 }

@@ -9,3 +9,7 @@ const Header = (props) => (
 );
 
 export default Header
+
+//browser router
+//switch function
+//create component for home route

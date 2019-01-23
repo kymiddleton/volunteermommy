@@ -11,7 +11,7 @@ const TeacherSchema = new Schema({
         lowercase: true,
     },
     grade: {
-        type: Array,
+        type: String,
     }
 });
 

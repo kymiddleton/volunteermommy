@@ -17,11 +17,14 @@ module.exports = function (app) {
     // POST route: create new db entry
     app.post('/api/child', function (req, res) {  //Works
         console.log('--->Adding child in mongo--->');
+        console.log(req.body);
         db.Child.create(req.body)
             .then(function (dbChild) {
+                console.log("Child successfully added");
                 res.json(dbChild);
             })
             .catch(function (err) {
+                console.log("Error adding child: "+err);
                 res.json(err);
             });
     });

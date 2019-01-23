@@ -1,6 +1,6 @@
 import React from "react";
 
-const SelectChild = props => {
+const SelectTeacher = props => {
   return (
     <div className="form-group">
       <label htmlFor={props.name}> {props.title} </label>
@@ -9,6 +9,7 @@ const SelectChild = props => {
         id={props.id}
         name={props.name}
         onChange={props.handleChange}
+        onClick={props.handleClick}
       >
         <option value= " " disabled> {props.placeholder} </option>
           
@@ -31,4 +32,10 @@ const SelectChild = props => {
   );
 };
 
-export default SelectChild;
+export default SelectTeacher;
+
+//add the onClick that calls props of the teacher selection.
+//in child container to handle click
+//conditional rendering
+//ternary
+

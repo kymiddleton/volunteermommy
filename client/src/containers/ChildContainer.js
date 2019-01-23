@@ -4,7 +4,8 @@ import * as $ from 'axios';
 /* Import Components */
 import Input from "../components/Input";
 // import Select from "../components/Select";
-import SelectChild from "../components/SelectChild";
+import SelectGrade from "../components/SelectGrade";
+import SelectTeacher from "../components/SelectTeacher";
 import Button from "../components/Button";
 
 class ChildContainer extends Component {
@@ -15,26 +16,39 @@ class ChildContainer extends Component {
             newChild: {
                 firstName: "",
                 lastName: "",
-                grade: [],
-                teacher: [],
-                parent: []
+                grade: "",
+                teacher: "",
+                parent: ""
             },
             gradeOptions: [
-               
+                { grade: "PS3 M-F" },
+                { grade: "PS3 M-TH" },
+                { grade: "PS3 T, TH" },
+                { grade: "PS3 T, TH, F" },
+                { grade: "PS3 M, T, TH" },
+                { grade: "PS3 M, W, F" },
+                { grade: "PK4 M, W, F" },
+                { grade: "PK4 M-TH" },
+                { grade: "PK4 M-TH" },
+                { grade: "PK4 M-TH" },
+                { grade: "PK4 M-TH" },
+                { grade: "PK4 M-F" },
+                { grade: "Kindergarten" },
             ],
             teacherOptions: [
-                { fullName: "Janet Duke", grade: "PS3 M-F" },
-                { fullName: "Julia Smith", grade: "PS3 M-TH" },
-                { fullName: "Wendy Weaver", grade: "PS3 T, TH" },
-                { fullName: "Jennifer Johnson", grade: "PS3 T, TH, F" },
-                { fullName: "Lindsay Long", grade: "PS3 M, T, TH" },
-                { fullName: "Heather Happy", grade: "PS3 M, W, F" },
-                { fullName: "Leslie Lovelace", grade: "PK4 M, W, F" },
-                { fullName: "Cindy Carebear", grade: "PK4 M-TH" },
-                { fullName: "Jennifer Beamer", grade: "PK4 M-TH" },
-                { fullName: "Teri Terrific", grade: "PK4 M-TH" },
-                { fullName: "Michelle Reck", grade: "PK4 M-TH" },
-                { fullName: "Amy Wilbanks", grade: "Kindergarten" },
+                { fullName: "Janet Duke"},
+                { fullName: "Julia Smith"},
+                { fullName: "Wendy Weaver"},
+                { fullName: "Jennifer Johnson"},
+                { fullName: "Lindsay Long"},
+                { fullName: "Heather Happy"},
+                { fullName: "Leslie Lovelace"},
+                { fullName: "Cindy Carebear"},
+                { fullName: "Jennifer Beamer"},
+                { fullName: "Teri Terrific"},
+                { fullName: "Michelle Reck"},
+                { fullName: "Sara Sullivano"},
+                { fullName: "Amy Wilbanks"},
             ],
             parentOptions: [],
         };
@@ -44,6 +58,8 @@ class ChildContainer extends Component {
 
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.handleClearForm = this.handleClearForm.bind(this);
+        
+        this.handleGradeInput = this.handleGradeInput.bind(this);
         this.handleTeacherInput = this.handleTeacherInput.bind(this);
     }
 
@@ -73,16 +89,25 @@ class ChildContainer extends Component {
             }),
         );
     }
-
-    handleTeacherInput(event) {
-        event.preventDefault();
+    handleGradeInput(event) {
         let value = event.target.value;
-        let grade = event.target.grade;
         this.setState(
             prevState => ({
                 newChild: {
                     ...prevState.newChild,
-                    [grade]: value
+                    grade: value
+                }
+            }),
+        );
+    }
+
+    handleTeacherInput(event) {
+        let value = event.target.value;
+        this.setState(
+            prevState => ({
+                newChild: {
+                    ...prevState.newChild,
+                    teacher: value
                 }
             }),
         );
@@ -106,8 +131,8 @@ class ChildContainer extends Component {
           newChild: {
             firstName: "",
             lastName: "",
-            grade: [],
-            teacher: [],
+            grade: "",
+            teacher: "",
             parent: []
           }
         });
@@ -122,7 +147,7 @@ class ChildContainer extends Component {
                     value={this.state.newChild.firstName}
                     placeholder={"Enter First Name"}
                     handleChange={this.handleFirstName}
-                />{""}
+                    />{""}
                 {/* End newChild firstName Field*/}
                 <Input
                     type={"text"}
@@ -130,31 +155,40 @@ class ChildContainer extends Component {
                     value={this.state.newChild.lastName}
                     placeholder={"Enter Last Name"}
                     handleChange={this.handleLastName}
-                />{""}
-                {/* End newAdult lastName Field*/}
-                <SelectChild
+                    />{""}
+                {/* End newChild lastName Field*/}
+                <SelectGrade
+                    title={"Grade"}
+                    name={"Grade"}
+                    options={this.state.gradeOptions}
+                    value={this.state.newChild.grade}
+                    placeholder={"Select Grade"}
+                    handleChange={this.handleGradeInput}
+                    />{""}
+                {/* End Child Relationship Selection Field */}
+                <SelectTeacher
                     title={"Teacher"}
                     name={"Teacher"}
                     options={this.state.teacherOptions}
                     value={this.state.newChild.teacher}
                     placeholder={"Select Teacher"}
                     handleChange={this.handleTeacherInput}
-                    />{" "}
+                    />{""}
                 {/* End Child Relationship Selection Field */}
                 <Button
                     action={this.handleFormSubmit}
                     type={"primary"}
                     title={"Submit"}
                     style={buttonStyle}
-                />{" "}
-                {/* End newAdult Submit */}
+                    />{""}
+                {/* End newChild Submit */}
                 <Button
                     action={this.handleClearForm}
                     type={"secondary"}
                     title={"Clear"}
                     style={buttonStyle}
-                />{" "}
-                {/* End newAdult Clear Form */}
+                    />{""}
+                {/* End newChild Clear Form */}
             </form>
         );
     }

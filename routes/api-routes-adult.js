@@ -19,10 +19,11 @@ module.exports = function (app) {
     console.log('--->Adding Adult in mongo--->');
     db.Adult.create(req.body)
       .then(function (dbAdult) {
-        console.log('haha')
+        console.log('Adult successfully added')
         res.json(dbAdult);
       })
       .catch(function (err) {
+        console.log("Error adding adult: "+err)
         res.json(err);
       });
   });

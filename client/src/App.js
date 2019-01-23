@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+// import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Header from './components/Header/Header';
 import AdultContainer from './containers/AdultContainer.js';
@@ -19,7 +19,6 @@ class App extends Component {
 
 
   toggleChild () {
-    
     this.setState(
       {showChild: true}
     )
@@ -29,16 +28,18 @@ class App extends Component {
   render() {
     return (
     <div>
-      <Header />
-      <h1>Adult Volunteer</h1>
-      <AdultContainer toggleChild={()=>this.toggleChild()}>
+        {/* <BrowserRouter> */}
+          <Header />
+          {/* <Main /> */}
+          <h1>Adult Volunteer</h1>
+          <AdultContainer toggleChild={()=>this.toggleChild()}></AdultContainer>
 
-      </AdultContainer>
-      <h1>Child of Volunteer</h1>
-      {this.state.showChild &&
-        <ChildContainer></ChildContainer>
-    }
-      
+          
+          <h1>Child of Volunteer</h1>
+          {this.state.showChild &&
+            <ChildContainer></ChildContainer>
+          }
+        {/* </BrowserRouter>  */}
     </div>
     )
   }
