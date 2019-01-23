@@ -17,8 +17,9 @@ const SelectTeacher = props => {
         {props.options.map(option => {
           return (
             <option 
+           
             key={option.fullName} 
-            value={option.fullName} 
+            value={option._id} 
             label={option.fullName}
             > 
             

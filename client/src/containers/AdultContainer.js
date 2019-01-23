@@ -102,13 +102,14 @@ class AdultContainer extends Component {
         event.preventDefault();
         let adultData = this.state.newAdult;
         console.log(adultData);
-    
+        const self = this;
         $.post('/api/adult', adultData)
         .then(res => {
             console.log(res);
             console.log(res.data);
+            self.props.toggleChild(res.data._id);
         })
-        this.props.toggleChild();
+        
     }
 
     handleClearForm(event) {

@@ -18,9 +18,9 @@ class App extends Component {
   }
 
 
-  toggleChild () {
+  toggleChild =(adultId)=> {
     this.setState(
-      {showChild: true}
+      {showChild: true, adultId: adultId}
     )
   }
 
@@ -32,12 +32,12 @@ class App extends Component {
           <Header />
           {/* <Main /> */}
           <h1>Adult Volunteer</h1>
-          <AdultContainer toggleChild={()=>this.toggleChild()}></AdultContainer>
+          <AdultContainer toggleChild={this.toggleChild}></AdultContainer>
 
           
           <h1>Child of Volunteer</h1>
           {this.state.showChild &&
-            <ChildContainer></ChildContainer>
+            <ChildContainer adultId={this.state.adultId}></ChildContainer>
           }
         {/* </BrowserRouter>  */}
     </div>

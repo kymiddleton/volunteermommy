@@ -22,8 +22,8 @@ const ChildSchema = new Schema({
     //     required: "Selection Required"
     // },
     teacher: {
-        type: String,
-        required: "Selection Required",
+        type: Schema.Types.ObjectId,
+        ref: 'Teacher',
     },
     parent: [{
         type: Schema.Types.ObjectId,

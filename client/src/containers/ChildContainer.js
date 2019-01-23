@@ -17,11 +17,10 @@ class ChildContainer extends Component {
                 lastName: "",
                 // grade:
                 teacher: "",
-                parent: [],
+                parent: this.props.adultId
             },
-            parentOptions: [
+            parentOptions: [],
 
-            ],
             newTeacher: {
                 fullName: "",
                 grade: ""
@@ -65,6 +64,7 @@ class ChildContainer extends Component {
 
     handleTeacherInput(event) {
         let value = event.target.value;
+        console.log(value, "I think this should be the teacher")
         this.setState(
             prevState => ({
                 newChild: {
