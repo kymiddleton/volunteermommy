@@ -8,10 +8,11 @@ const TeacherSchema = new Schema({
     fullName: {
         type: String,
         trim: true,
-        lowercase: true,
+        required: "Selection Required",
     },
     grade: {
         type: String,
+        required: "Selection Required"
     }
 });
 
