@@ -40,7 +40,6 @@ const AdultSchema = new Schema({
     children: [{
         type: Schema.Types.ObjectId,
         ref: 'Child',
-        trim: true,
         }
     ]
     

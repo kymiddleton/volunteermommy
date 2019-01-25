@@ -17,13 +17,13 @@ const ChildSchema = new Schema({
         lowercase: true,
         required: "Last Name is required"
     },
-    grade: {
-        type: String,
-        required: "Selection Required"
-    },
+    // grade: {
+    //     type: String,
+    //     required: "Selection Required"
+    // },
     teacher: {
-        type: String,
-        required: "Selection Required",
+        type: Schema.Types.ObjectId,
+        ref: 'Teacher',
     },
     parent: [{
         type: Schema.Types.ObjectId,

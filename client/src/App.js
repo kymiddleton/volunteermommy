@@ -1,49 +1,62 @@
 import React, { Component } from 'react';
-// import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import logo from './assets/whitelogo.png';
+import MyDetails from './Pages/MyDetails/MyDetails'
 
-import Header from './components/Header/Header';
-import AdultContainer from './containers/AdultContainer.js';
-import ChildContainer from './containers/ChildContainer.js';
-
-// import * as $ from 'axios';
+// import Header from './components/Header/Header';
 
 import './App.css';
+
+const Header = (props) => (
+  <div className="header">
+      <img src={logo} alt="whitelogo" className="logo"></img>
+  </div>
+);
+
+
+const Dashboard = () => <h2>Dashboard</h2>
+// const MyDetails = () => <h2>My Details</h2>
+const Events = () => <h2>Events</h2>
+const Home = () => <h2>Home</h2>
+
 
 
 
 class App extends Component {
 
-  state = {
-    showChild: false
-  }
-
-
-  toggleChild () {
-    this.setState(
-      {showChild: true}
-    )
-  }
-
-
   render() {
     return (
-    <div>
-        {/* <BrowserRouter> */}
+      <Router>
+        <div>
           <Header />
-          {/* <Main /> */}
-          <h1>Adult Volunteer</h1>
-          <AdultContainer toggleChild={()=>this.toggleChild()}></AdultContainer>
+          <nav>
+            <li>
+              <Link to="/">Dashboard</Link>
+            </li>
+            <li>
+              <Link to="/mydetails/">My Details</Link>
+            </li>
+            <li>
+              <Link to="/events/">Events</Link>
+            </li>
+            <li>
+              <Link to="/home/">Home</Link>
+            </li>
+          </nav>
 
-          
-          <h1>Child of Volunteer</h1>
-          {this.state.showChild &&
-            <ChildContainer></ChildContainer>
-          }
-        {/* </BrowserRouter>  */}
-    </div>
-    )
+          <Route path="/" exact component={Dashboard} />
+          <Route path="/mydetails/" exact component={MyDetails} />
+          <Route path="/events/" exact component={Events} />
+          <Route path="/home/" exact component={Home} />
+        </div>
+      </Router>
+    );
   }
 }
 
-
 export default App;
+
+
+//browser router
+//switch function
+//create component for home route
