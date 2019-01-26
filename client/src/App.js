@@ -15,7 +15,7 @@ class App extends Component {
       <Router>
         <div>
           <Header />
-          <nav>
+          {/* <nav>
             <li>
               <Link to="/">Dashboard</Link>
             </li>
@@ -28,7 +28,7 @@ class App extends Component {
             <li>
               <Link to="/home/">Home</Link>
             </li>
-          </nav>
+          </nav> */}
 
           <Route path="/" exact component={Dashboard} />
           <Route path="/mydetails/" exact component={MyDetails} />
