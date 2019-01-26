@@ -1,8 +1,19 @@
 const express = require("express");
-
 const mongoose = require("mongoose");
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+/*========PASSPORT.JS=========*/
+const authRoutes = require('./routes/auth-routes');
+const passportSetup = require('./client/config/passport-setup');
+
+//set up view engine
+app.set('view engine');
+
+//Routes for passport.js
+app.use('/auth', authRoutes);
+
+
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -24,7 +35,6 @@ mongoose.connect(
   { useNewUrlParser: true}
 );
 // mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactNotes");
-
 
 // Start the API server
 app.listen(PORT, function() {
