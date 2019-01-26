@@ -4,7 +4,7 @@ import Home from './Pages/Home/Home'
 import Dashboard from './Pages/Dashboard/Dashboard'
 import MyDetails from './Pages/MyDetails/MyDetails'
 import Events from './Pages/Events/Events'
-// import Header from './components/Header/Header';
+import Header from './components/Header/Header';
 import './App.css';
 
 
@@ -14,7 +14,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          {/* <Header /> */}
+          <Header />
           <nav>
             <li>
               <Link to="/">Dashboard</Link>

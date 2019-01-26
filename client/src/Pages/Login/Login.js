@@ -8,7 +8,7 @@ class Login extends Component {
         return (
             <div>
                 <h1>Login</h1>
-                <nav>
+                {/* <nav>
                     <ul>
                         <li><a href="/auth/logout">Logout</a></li>
                         <li><a href="/auth/login">Login</a></li>
@@ -17,7 +17,7 @@ class Login extends Component {
                 </nav>
                 <main>
                     <a className="google-btn-btn" href="/auth/google">Google+</a>
-                </main>
+                </main> */}
             </div>
         )
     }

@@ -4,14 +4,14 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 /*========PASSPORT.JS=========*/
-const authRoutes = require('./routes/auth-routes');
-const passportSetup = require('./client/config/passport-setup');
+// const authRoutes = require('./routes/auth-routes');
+// const passportSetup = require('./client/config/passport-setup');
 
-//set up view engine
-app.set('view engine');
+// //set up view engine
+// app.set('view engine');
 
-//Routes for passport.js
-app.use('/auth', authRoutes);
+// //Routes for passport.js
+// app.use('/auth', authRoutes);
 
 
 
