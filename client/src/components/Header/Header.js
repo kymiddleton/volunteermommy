@@ -19,7 +19,7 @@ const Header = (props) => (
               <Link to="/">Dashboard</Link>
             </li>
             <li>
-              <Link to="/mydetails/">My Details</Link>
+              <Link to="/myaccount/">My Account</Link>
             </li>
             <li>
               <Link to="/events/">Events</Link>

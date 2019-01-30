@@ -10,7 +10,7 @@ Create an application to automate the process of scheduling preschool parent vol
 
 2. As a user, I want to be able to and and/or delete a child or children enrolled in the school. 
 
-### Additonal Functionality
+## Additonal Functionality
 
 3. As a user, I want to create an account and register as a school volunteer.
 
@@ -23,6 +23,35 @@ Create an application to automate the process of scheduling preschool parent vol
 7. As an admin, I want to view a list of all registered volunteers. 
 
 8. As an admin, I want to view an event with a list of registered volunteers. 
+
+### Project Design MVP
+
+Landing Page
+![Landing Page:](client/src/assets/LandingPage.jpeg)
+
+Create Account View
+![Create Account:](client/src/assets/CreateAccount.jpeg)
+
+New Volunteer
+![Create Volunteer:](client/src/assets/NewVolunteer.jpeg)
+
+My Account
+![My Details View:](client/src/assets/MyAccount.jpeg)
+
+### Project Design Future Components
+
+Login 
+![Login:](client/src/assets/Login.jpeg)
+
+Create Event 
+![Login:](client/src/assets/CreateEvent.jpeg)
+
+Events View
+![Login:](client/src/assets/EventsView.jpeg)
+
+My Events View
+![Login:](client/src/assets/MyEventsView.jpeg)
+
 
 ## Deliverables
 
