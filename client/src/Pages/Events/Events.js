@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from '../../components/Header/Header';
 import NewEvent from './NewEvent';
 import Tabs from '../../components/Tabs';
 
@@ -16,6 +17,7 @@ class Events extends Component {
     render() {
         return (
             <div>
+                <Header />
                 <h1>Create New Events</h1>
                 <h2>Coming Soon</h2>
                 <Tabs tabList={this.state.tabList}/>

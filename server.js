@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -16,6 +16,8 @@ if (process.env.NODE_ENV === "production") {
 require('./routes/api-routes-adult.js')(app);
 require('./routes/api-routes-child.js')(app);
 require('./routes/api-routes-teacher.js')(app);
+
+// require('./routes/api-routes-signup.js')(app);
 
 // Connect to the Mongo DB
 mongoose.connect(

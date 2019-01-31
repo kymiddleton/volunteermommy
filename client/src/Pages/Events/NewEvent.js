@@ -8,6 +8,5 @@ const NewEvent = (props) => (
         </div>
     </div>
 )
-        
-        
+              
 export default NewEvent; 
