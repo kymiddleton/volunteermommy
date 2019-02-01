@@ -8,7 +8,10 @@ const Header = (props) => (
         <img src={logo} alt="whitelogo" className="logo"></img>
         <nav>
             <li>
-              <Link to="/">Dashboard</Link>
+              <Link to="/signin/">Log In</Link>
+            </li>
+            <li>
+              <Link to="/signup/">Sign Up</Link>
             </li>
             <li>
               <Link to="/myaccount/">My Account</Link>

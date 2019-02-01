@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // import './home.css';
 
 
-class Home extends Component {
+class SignIn extends Component {
 
         state = []
 
@@ -18,4 +18,4 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default SignIn;
