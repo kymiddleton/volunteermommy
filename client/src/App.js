@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Auth from './Utils/Auth';
+import { PrivateRoute, PropsRoute, LoggedOutRoute } from './components/Routes';
 
-import Home from './Pages/Home/Home';
-// import SignIn from './Pages/SignIn/SignIn';
-// import SignUp from './Pages/SignUp/SignUp';
+import HomePage from './Pages/HomePage';
+import LoginPage from './Pages/LoginPage.js';
+import SignUpPage from './Pages/SignUpPage.js';
 import MyAccount from './Pages/MyAccount/MyAccount';
 import Events from './Pages/Events/Events';
-// import HeaderHome from './components/Header/HeaderHome';
+import DashboardPage from './Pages/DashboardPage.js';
 import Header from './components/Header/Header';
-
-import SignUpPage from './Pages/SignUpPage.js';
 import './App.css';
-
-
 
 class App extends Component {
 
@@ -37,11 +34,18 @@ class App extends Component {
         <div>
           {/* <HeaderHome /> */}
           <Header />
-          {/* <Route path="/signin/" exact component={SignIn} toggleAuthenticateStatus={this.toggleAuthenticateStatus} /> */}
-          <Route path="/signup/" exact component={SignUpPage} />
+          <Route path="/signin/" exact component={LoginPage} toggleAuthenticateStatus={this.toggleAuthenticateStatus} />
+          <LoggedOutRoute path="/signup/" exact component={SignUpPage} />
           <Route path="/myaccount/" exact component={MyAccount} />
           <Route path="/events/" exact component={Events} />
-          <Route path="/home/" exact component={Home} toggleAuthenticateStatus={this.toggleAuthenticateStatus} />
+          <PropsRoute exact path="/" component={HomePage} toggleAuthenticateStatus={this.toggleAuthenticateStatus} />
+          <PrivateRoute path="/dashboard" component={DashboardPage} />
+
+          {/* <PropsRoute exact path="/" component={HomePage} toggleAuthenticateStatus={this.toggleAuthenticateStatus} /> */}
+          {/* <PrivateRoute path="/dashboard" component={DashboardPage} /> */}
+          {/* <LoggedOutRoute path="/login" component={LoginPage} toggleAuthenticateStatus={this.toggleAuthenticateStatus} /> */}
+          {/* <LoggedOutRoute path="/signup" component={SignUpPage} /> */}
+          {/* <Route path="/logout" component={LogoutFunction} /> */}
         </div>
       </Router>
     );

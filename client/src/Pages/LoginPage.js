@@ -1,19 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SignUpForm from '../components/SignUpForm.js';
+import Auth from '../Utils/Auth';
+import LoginForm from '../components/LoginForm.js';
 import API from '../Utils/APIs';
 
-class SignUpPage extends React.Component {
+class LoginPage extends React.Component {
     // set the initial component state
     state = {
         errors: {},
+        successMessage: '',
         user: {
             email: '',
-            name: '',
             password: ''
         }
     }
 
+    componentDidMount() {
+        const storedMessage = localStorage.getItem('successMessage');
+        let successMessage = '';
+
+        if (storedMessage) {
+            successMessage = storedMessage;
+            localStorage.removeItem('successMessage');
+        }
+        this.setState({ successMessage });
+    }
+
+    componentWillUnmount() {
+        this.setState({
+            errors: {}
+        });
+    }
     /**
      * Process the form.
      *
@@ -24,19 +41,17 @@ class SignUpPage extends React.Component {
         event.preventDefault();
 
         // create a string for an HTTP body message
-        const { name, email, password } = this.state.user;
+        const { email, password } = this.state.user;
 
-        //const formData = `email=${email}&password=${password}`;
-        API.signUp({ name, email, password }).then(res => {
-            // change the component-container state
-            // set a message
-            localStorage.setItem('successMessage', res.data.message);
+        API.login({ email, password }).then(res => {
+            // save the token
+            Auth.authenticateUser(res.data.token);
 
-            // redirect user after sign up to login page
-            this.props.history.push('/login');
-            this.setState({
-                errors: {}
-            });
+            // update authenticated state
+            this.props.toggleAuthenticateStatus()
+
+            // redirect signed in user to dashboard
+            this.props.history.push('/dashboard');
 
         }).catch(({ response }) => {
 
@@ -47,6 +62,7 @@ class SignUpPage extends React.Component {
                 errors
             });
         });
+
     }
 
     /**
@@ -69,18 +85,20 @@ class SignUpPage extends React.Component {
      */
     render() {
         return (
-            <SignUpForm
+            <LoginForm
                 onSubmit={this.processForm}
                 onChange={this.changeUser}
                 errors={this.state.errors}
+                successMessage={this.state.successMessage}
                 user={this.state.user}
             />
         );
     }
+
 }
 
-SignUpPage.contextTypes = {
+LoginPage.contextTypes = {
     router: PropTypes.object.isRequired
 };
 
-export default SignUpPage;
+export default LoginPage;
