@@ -1,9 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Input } from 'semantic-ui-react'
-import { Card, Message } from 'semantic-ui-react'
-import { Button } from 'semantic-ui-react'
+
+import { Card, CardText } from 'material-ui/Card';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
+
+// import { Input } from 'semantic-ui-react'
+// import { Card, Message } from 'semantic-ui-react'
+// import { Button } from 'semantic-ui-react'
 
 
 const SignUpForm = ({
@@ -19,44 +24,44 @@ const SignUpForm = ({
                 {errors.summary && <p className="error-message">{errors.summary}</p>}
 
                 <div className="field-line">
-                    <Input
-                        type="text"
-                        placeholder="Name"
-                        error={errors.name}
+                    <TextField
+                        floatingLabelText="Name"
+                        name="name"
+                        errorText={errors.name}
                         onChange={onChange}
                         value={user.name}
                     />
                 </div>
 
                 <div className="field-line">
-                    <Input
-                        type="Email"
-                        placeholder="Email"
-                        error={errors.email}
+                    <TextField
+                        floatingLabelText="Email"
+                        name="email"
+                        errorText={errors.email}
                         onChange={onChange}
                         value={user.email}
                     />
                 </div>
 
                 <div className="field-line">
-                    <Input
-                        type="Password"
-                        placeholder="Password"
+                    <TextField
+                        floatingLabelText="Password"
+                        type="password"
                         name="password"
                         onChange={onChange}
-                        error={errors.password}
+                        errorText={errors.password}
                         value={user.password}
                     />
                 </div>
 
                 <div className="button-line">
-                    <Button type="submit" label="Create New Account" primary />
+                    <RaisedButton type="submit" label="Create New Account" primary />
                 </div>
 
-                <Message>Already have an account? <Link to={'/login'}>Log in</Link></Message>
+                <CardText>Already have an account? <Link to={'/login'}>Log in</Link></CardText>
             </form>
         </Card>
-    );
+);
 
 SignUpForm.propTypes = {
     onSubmit: PropTypes.func.isRequired,

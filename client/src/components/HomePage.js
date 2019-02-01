@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Auth from '../Utils/Auth';
-import { Card, Message } from 'semantic-ui-react'
-
+// import { Card, Message } from 'semantic-ui-react';
+import { Card, CardTitle, CardText } from 'material-ui/Card';
 // import './home.css';
 
 class HomePage extends Component {
@@ -14,11 +14,11 @@ class HomePage extends Component {
     render() {
         return (
             <Card className="container">
-                <Card title="React Application" subtitle="This is the home page." />
+                <CardTitle title="React Application" subtitle="This is the home page." />
                 {Auth.isUserAuthenticated() ? (
-                    <Message style={{ fontSize: '16px', color: 'green' }}>Welcome! You are logged in.</Message>
+                    <CardText style={{ fontSize: '16px', color: 'green' }}>Welcome! You are logged in.</CardText>
                 ) : (
-                        <Message style={{ fontSize: '16px', color: 'green' }}>You are not logged in.</Message>
+                        <CardText style={{ fontSize: '16px', color: 'green' }}>You are not logged in.</CardText>
                     )}
             </Card>
         );

@@ -4,6 +4,5 @@ module.exports = {
     Adult: require("./Adult"),
     Child: require("./Child"),
     Teacher: require("./Teacher"),
-    User: require("./user"),
-    // UserSession: require("./UserSession")
+    User: require("./user")
 };

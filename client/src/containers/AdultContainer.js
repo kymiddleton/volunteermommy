@@ -138,7 +138,7 @@ class AdultContainer extends Component {
                 {/* End newAdult firstName Field*/}
                 <Input
                     type={"text"}
-                    lastName={"Lastt Name"}
+                    lastName={"Last Name"}
                     value={this.state.newAdult.lastName}
                     placeholder={"Enter Last Name"}
                     handleChange={this.handleLastName}
