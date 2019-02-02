@@ -53,10 +53,11 @@ class LoginPage extends React.Component {
             // redirect signed in user to dashboard
             this.props.history.push('/dashboard');
 
-        }).catch(({ response }) => {
-
-            const errors = response.data.errors ? response.data.errors : {};
-            errors.summary = response.data.message;
+        }).catch(( { res }) => {
+            console.log("Response: "+res.data)
+            const errors = res.data.errors ? res.data.errors : {};
+            // console.log(response);
+            errors.summary = res.data.message;
 
             this.setState({
                 errors

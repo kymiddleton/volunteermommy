@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+// import injectTapEventPlugin from 'react-tap-event-plugin';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
@@ -13,14 +14,18 @@ import SignUpPage from './Pages/SignUpPage.js';
 import DashboardPage from './Pages/DashboardPage.js';
 import MyAccount from './Pages/MyAccount/MyAccount';
 import Events from './Pages/Events/Events';
+import Volunteers from './Pages/Volunteers.js';
 import Header from './components/Header/Header';
 import './App.css';
 
+// remove tap delay, essential for MaterialUI to work properly
+// injectTapEventPlugin();
+
 class App extends Component {
 
-  state = {
-    authenticated: false
-  }
+  // state = {
+  //   authenticated: false
+  // }
 
   // componentDidMount() {
   //   // check if user is logged in on refresh
@@ -60,7 +65,7 @@ class App extends Component {
             <Route path="/logout" component={LogoutFunction} />
             <Route path="/myaccount" component={MyAccount} />
             <Route path="/events" component={Events} />
-
+            <Route path="/volunteers" component={Volunteers} />
           </div>
         </Router>
       </MuiThemeProvider>

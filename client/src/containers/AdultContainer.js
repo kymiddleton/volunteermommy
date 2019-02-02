@@ -109,7 +109,6 @@ class AdultContainer extends Component {
             console.log(res.data);
             self.props.toggleChild(res.data._id);
         })
-        
     }
 
     handleClearForm(event) {

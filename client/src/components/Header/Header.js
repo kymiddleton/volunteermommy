@@ -29,30 +29,33 @@ class Header extends Component {
 
           <nav>
 
-            {this.state.authenticated ? (
+            {/* {this.state.authenticated ? ( */}
               <li>
                 <Link to="/logout">Log out</Link>
               </li>
-            ) : (
+            {/* ) : ( */}
                 <li>
                   <Link to="/login">Log in</Link>
                 </li>
-              )}
+              {/* )}
 
-            {this.state.authenticated ? (
+            {this.state.authenticated ? ( */}
               <li>
                 <Link to="/dashboard">Dashboard</Link>
               </li>
-            ) : (
+            {/* ) : ( */}
                 <li>
                   <Link to="/signup">Sign up</Link>
                 </li>
-              )}
+              {/* )} */}
             <li>
               <Link to="/myaccount/">My Account</Link>
             </li>
             <li>
               <Link to="/events/">Events</Link>
+            </li>
+            <li>
+              <Link to="/volunteers/">Volunteers</Link>
             </li>
             <li>
               <Link to="/home/">Home</Link>

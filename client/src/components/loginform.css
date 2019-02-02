@@ -1,0 +1,42 @@
+.button-line, .span, .label {
+    color: #0654b4;
+}
+
+a {
+    color: #0654b4;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.4s;
+}
+
+a:hover {
+    color: #1976d2;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.container {
+    margin: 30px auto;
+    text-align: center;
+    width: 300px;
+}
+
+.card-heading {
+    padding: 16px;
+}
+
+.field-line, .button-line {
+    padding: 16px;
+}
+
+.error-message {
+    padding: 0 16px;
+    color: tomato;
+}
+
+.success-message {
+    padding: 0 16px;
+    color: green;
+}
