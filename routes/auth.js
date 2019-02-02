@@ -85,7 +85,6 @@ router.post('/signup', (req, res, next) => {
     });
   }
 
-
   return passport.authenticate('local-signup', (err) => {
     if (err) {
       if (err.name === 'MongoError' && err.code === 11000) {

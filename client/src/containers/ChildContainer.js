@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Auth from '../Utils/Auth';
 import * as $ from 'axios';
 
 /* Import Components */
@@ -77,10 +78,11 @@ class ChildContainer extends Component {
 
     handleFormSubmit(event) {
         event.preventDefault();
+        const token = Auth.getToken();
         let childData = this.state.newChild;
         console.log(childData);
     
-        $.post('/api/child', childData)
+        $.post('/api/child', childData, {headers: {Authorization: `bearer ${token}`}})
         .then(res => {
             console.log(res);
             console.log(res.data);
@@ -91,7 +93,8 @@ class ChildContainer extends Component {
     //filtering logic, store in variable and send in post request
 
     componentDidMount () {
-        $.get('/api/teacher')
+        const token = Auth.getToken();
+        $.get('/api/teacher', {headers: {Authorization: `bearer ${token}`}})
         .then(res => {
             this.setState({
                 teacherOptions: res.data

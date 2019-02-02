@@ -1,10 +1,13 @@
 import React, { Component } from "react";
-import * as $ from 'axios';
+import API from '../Utils/APIs'
+import Auth from '../Utils/Auth';
+// import * as $ from 'axios';
 
 /* Import Components */
 import Input from "../components/Input";
 import Select from "../components/Select";
 import Button from "../components/Button";
+// import autoprefixer from "material-ui/utils/autoprefixer";
 
 class AdultContainer extends Component {
     constructor(props) {
@@ -100,13 +103,14 @@ class AdultContainer extends Component {
 
     handleFormSubmit(event) {
         event.preventDefault();
+        const token = Auth.getToken();
+        
         let adultData = this.state.newAdult;
         console.log(adultData);
         const self = this;
-        $.post('/api/adult', adultData)
+        API.adult(token, adultData)
+        // $.post('/api/adult', adultData)
         .then(res => {
-            console.log(res);
-            console.log(res.data);
             self.props.toggleChild(res.data._id);
         })
     }
@@ -183,14 +187,10 @@ class AdultContainer extends Component {
                     style={buttonStyle}
                 />
                 {/* End newAdult Clear Form */}
-                
-            
             </form> 
         );
     }
 }
-//Conditional rendering.  Once Adult record submitted, the option to add a child appears. 
-//Show child property on state, defualt to false
 
 const buttonStyle = {
     margin: "10px 10px 10px 10px"

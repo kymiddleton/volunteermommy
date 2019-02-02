@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route} from 'react-router-dom';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-// import Auth from './Utils/Auth';
+import Auth from './Utils/Auth';
 import { PrivateRoute, PropsRoute, LoggedOutRoute } from './components/Routes';
 
 import HomePage from './components/HomePage';
@@ -23,19 +23,19 @@ import './App.css';
 
 class App extends Component {
 
-  // state = {
-  //   authenticated: false
-  // }
+  state = {
+    authenticated: false
+  }
 
-  // componentDidMount() {
-  //   // check if user is logged in on refresh
-  //   this.toggleAuthenticateStatus()
-  // }
+  componentDidMount() {
+    // check if user is logged in on refresh
+    this.toggleAuthenticateStatus()
+  }
 
-  // toggleAuthenticateStatus = () => {
-  //   // check authenticated status and toggle state based on that
-  //   this.setState({ authenticated: Auth.isUserAuthenticated() })
-  // }
+  toggleAuthenticateStatus = () => {
+    // check authenticated status and toggle state based on that
+    this.setState({ authenticated: Auth.isUserAuthenticated() })
+  }
 
   render() {
     return (
