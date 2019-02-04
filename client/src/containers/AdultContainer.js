@@ -7,7 +7,6 @@ import Auth from '../Utils/Auth';
 import Input from "../components/Input";
 import Select from "../components/Select";
 import Button from "../components/Button";
-// import autoprefixer from "material-ui/utils/autoprefixer";
 
 class AdultContainer extends Component {
     constructor(props) {
@@ -101,15 +100,23 @@ class AdultContainer extends Component {
         );
     }
 
+    // handleFormSubmit(event) {
+    //     event.preventDefault();
+    //     let adultData = this.state.newAdult;
+    //     const self = this;
+    //     $.post('/api/adult', adultData)
+    //     .then(res => {
+    //         self.props.toggleChild(res.data._id);
+    //     })
+    // }
+
     handleFormSubmit(event) {
         event.preventDefault();
         const token = Auth.getToken();
-        
         let adultData = this.state.newAdult;
         console.log(adultData);
         const self = this;
         API.adult(token, adultData)
-        // $.post('/api/adult', adultData)
         .then(res => {
             self.props.toggleChild(res.data._id);
         })

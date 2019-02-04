@@ -21,24 +21,13 @@ class MyAccount extends Component {
         ]
     }
 
-    // toggleChild = (adultId) => {
-    //     this.setState(
-    //         { showChild: true, adultId: adultId }
-    //     )
-    // }
 
     render() {
         return (
             <div>
                 <Tabs tabList={this.state.tabList}/>
                 
-                {/* <h1>Adult Volunteer</h1>
-                <AdultContainer toggleChild={this.toggleChild}></AdultContainer>
-
-                <h1>Child of Volunteer</h1>
-                {this.state.showChild &&
-                    <ChildContainer adultId={this.state.adultId}></ChildContainer>
-                } */}
+                
             </div>
         )
     }

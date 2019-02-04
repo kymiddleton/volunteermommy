@@ -4,7 +4,6 @@ import * as $ from 'axios';
 
 /* Import Components */
 import Input from "../components/Input";
-// import Select from "../components/Select";
 import SelectTeacher from "../components/SelectTeacher";
 import Button from "../components/Button";
 
@@ -81,17 +80,14 @@ class ChildContainer extends Component {
         const token = Auth.getToken();
         let childData = this.state.newChild;
         console.log(childData);
-    
         $.post('/api/child', childData, {headers: {Authorization: `bearer ${token}`}})
+        // $.post('/api/child', childData)
         .then(res => {
             console.log(res);
             console.log(res.data);
         })
     }
-    //associate teacher with child
-    //function onclick teacher option, determine seleted teacher
-    //filtering logic, store in variable and send in post request
-
+    
     componentDidMount () {
         const token = Auth.getToken();
         $.get('/api/teacher', {headers: {Authorization: `bearer ${token}`}})

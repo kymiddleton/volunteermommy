@@ -6,6 +6,10 @@ const NewEvent = (props) => (
             <input placeholder="EVENT TITLE" /> < br />
             <input placeholder="EVENT DESCRIPTION" />
         </div>
+        <br />
+        <div>
+            <input placeholder="EVENT DETAILS" />
+        </div>
     </div>
 )
               

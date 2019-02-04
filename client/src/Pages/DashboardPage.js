@@ -1,7 +1,9 @@
 import React from 'react';
-import Auth from '../Utils/Auth';
-import Dashboard from '../components/Dashboard.js';
 import API from '../Utils/APIs';
+import Auth from '../Utils/Auth';
+
+import Dashboard from '../components/Dashboard.js';
+
 
 class DashboardPage extends React.Component {
   state = {
