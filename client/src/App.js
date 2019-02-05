@@ -16,7 +16,8 @@ import MyAccount from './Pages/MyAccount/MyAccount';
 import Events from './Pages/Events/Events';
 import Volunteers from './Pages/Volunteers.js';
 import Header from './components/Header/Header';
-// import DropDownHeader from './components/Header/DropDownHeader';
+// import LoggedInHeader from './components/Header/LoggedInHeader';
+import DropDownHeader from './components/Header/DropDownHeader';
 // import LandingHeader from './components/Header/LandingHeader.js';
 import './App.css';
 
@@ -45,8 +46,10 @@ class App extends Component {
         <Router>
           <div>
             {/* <HeaderHome /> */}
+            <DropDownHeader />
             <Header />
-            {/* <DropDownHeader /> */}
+            {/* <LoggedInHeader /> */}
+            
             {/* <LandingHeader /> */}
             {/* <div> */}
               {/* {this.state.authenticated ? (
