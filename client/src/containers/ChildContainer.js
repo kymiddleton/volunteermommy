@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Auth from '../Utils/Auth';
 import * as $ from 'axios';
+import './ChildContainer.css';
 
 /* Import Components */
 import Input from "../components/Input";
@@ -10,7 +11,7 @@ import Button from "../components/Button";
 class ChildContainer extends Component {
     constructor(props) {
         super(props);
-        
+
         this.state = {
             newChild: {
                 firstName: "",
@@ -80,86 +81,94 @@ class ChildContainer extends Component {
         const token = Auth.getToken();
         let childData = this.state.newChild;
         console.log(childData);
-        $.post('/api/child', childData, {headers: {Authorization: `bearer ${token}`}})
-        // $.post('/api/child', childData)
-        .then(res => {
-            console.log(res);
-            console.log(res.data);
-        })
-    }
-    
-    componentDidMount () {
-        const token = Auth.getToken();
-        $.get('/api/teacher', {headers: {Authorization: `bearer ${token}`}})
-        .then(res => {
-            this.setState({
-                teacherOptions: res.data
+        $.post('/api/child', childData, { headers: { Authorization: `bearer ${token}` } })
+            // $.post('/api/child', childData)
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
             })
-        })
+    }
+
+    componentDidMount() {
+        const token = Auth.getToken();
+        $.get('/api/teacher', { headers: { Authorization: `bearer ${token}` } })
+            .then(res => {
+                this.setState({
+                    teacherOptions: res.data
+                })
+            })
     }
 
     handleClearForm(event) {
         event.preventDefault();
         this.setState({
-          newChild: {
-            firstName: "",
-            lastName: "",
-            teacher: "",
-            parent: ""
-          },
-          newTeacher: {
-              fullName: "",
-              grade: ""
-          }
+            newChild: {
+                firstName: "",
+                lastName: "",
+                teacher: "",
+                parent: ""
+            },
+            newTeacher: {
+                fullName: "",
+                grade: ""
+            }
         });
     }
 
-    render () {
+    render() {
         return (
-            <form onSubmit={this.handleFormSubmit}>
-                <Input
-                    type={"text"}
-                    firstname={"First Name"}
-                    value={this.state.newChild.firstName}
-                    placeholder={"Enter First Name"}
-                    handleChange={this.handleFirstName}
+            <div className="container-wrapper">
+                <form onSubmit={this.handleFormSubmit}>
+                    <Input
+                        type={"text"}
+                        firstname={"First Name"}
+                        value={this.state.newChild.firstName}
+                        placeholder={"Enter First Name"}
+                        handleChange={this.handleFirstName}
                     />{""}
-                {/* End newChild firstName Field*/}
-                <Input
-                    type={"text"}
-                    lastName={"Last Name"}
-                    value={this.state.newChild.lastName}
-                    placeholder={"Enter Last Name"}
-                    handleChange={this.handleLastName}
+                    {/* End newChild firstName Field*/}
+                    <Input
+                        type={"text"}
+                        lastName={"Last Name"}
+                        value={this.state.newChild.lastName}
+                        placeholder={"Enter Last Name"}
+                        handleChange={this.handleLastName}
                     />{""}
-                {/* End newChild lastName Field*/}
-                <SelectTeacher
-                    title={"Teacher"}
-                    name={"Teacher"}
-                    options={this.state.teacherOptions}
-                    value={this.state.newChild.teacher}
-                    placeholder={"Select Teacher"}
-                    handleChange={this.handleTeacherInput}
-                    />{""}
-                {/* End Teacher Selection Field */}
-                <Button
-                    action={this.handleFormSubmit}
-                    type={"primary"}
-                    title={"Submit"}
-                    style={buttonStyle}
-                    />{""}
-                {/* End newChild Submit */}
-                <Button
-                    action={this.handleClearForm}
-                    type={"secondary"}
-                    title={"Clear"}
-                    style={buttonStyle}
-                    />{""}
-                {/* End newChild Clear Form */}
-            </form>
+                    {/* End newChild lastName Field*/}
+                    <div className="selection">
+                        <SelectTeacher
+                            title={"Teacher"}
+                            name={"Teacher"}
+                            options={this.state.teacherOptions}
+                            value={this.state.newChild.teacher}
+                            placeholder={"Select Teacher"}
+                            handleChange={this.handleTeacherInput}
+                        />{""}
+                        {/* End Teacher Selection Field */}
+                    </div>
+                    <div className="submit">
+                        <Button
+                            action={this.handleFormSubmit}
+                            type={"primary"}
+                            title={"Submit"}
+                            style={buttonStyle}
+                        />{""}
+                        {/* End newChild Submit */}
+                    </div>
+                    <div className="clear">
+                        <Button
+                            action={this.handleClearForm}
+                            type={"secondary"}
+                            title={"Clear"}
+                            style={buttonStyle}
+                        />{""}
+                        {/* End newChild Clear Form */}
+                    </div>
+                </form>
+            </div>
         );
     }
-} 
+}
 
 const buttonStyle = {
     margin: "10px 10px 10px 10px"
@@ -167,4 +176,3 @@ const buttonStyle = {
 
 
 export default ChildContainer;
-        
