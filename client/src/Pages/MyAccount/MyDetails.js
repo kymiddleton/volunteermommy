@@ -1,6 +1,7 @@
 import React from 'react';
 import AdultContainer from '../../containers/AdultContainer.js';
 import ChildContainer from '../../containers/ChildContainer.js';
+import UserDetails from './UserDetails';
 // import RaisedButton from 'material-ui/RaisedButton';
 
 class MyDetails extends React.Component {
@@ -14,6 +15,7 @@ class MyDetails extends React.Component {
                     <input placeholder="full name" /><br />
                     <input label="email" placeholder="email" />
                     <input placeholder="email" /><br />
+                    {/* <UserDetails /> */}
                 </div>
                 <br />
 

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import API from '../Utils/APIs'
 import Auth from '../Utils/Auth';
 // import * as $ from 'axios';
+import './AdultContainer.css';
 
 /* Import Components */
 import Input from "../components/Input";
@@ -11,7 +12,7 @@ import Button from "../components/Button";
 class AdultContainer extends Component {
     constructor(props) {
         super(props);
-        
+
         this.state = {
             newAdult: {
                 firstName: "",
@@ -46,7 +47,7 @@ class AdultContainer extends Component {
             () => console.log(this.state.newAdult)
         );
     };
-    
+
     handleLastName(event) {
         event.preventDefault();
         let value = event.target.value;
@@ -117,84 +118,91 @@ class AdultContainer extends Component {
         console.log(adultData);
         const self = this;
         API.adult(token, adultData)
-        .then(res => {
-            self.props.toggleChild(res.data._id);
-        })
+            .then(res => {
+                self.props.toggleChild(res.data._id);
+            })
     }
 
     handleClearForm(event) {
         event.preventDefault();
         this.setState({
-          newAdult: {
-            firstName: "",
-            lastName: "",
-            email: "",
-            phoneNumber: "",
-            children: []
-          }
+            newAdult: {
+                firstName: "",
+                lastName: "",
+                email: "",
+                phoneNumber: "",
+                children: []
+            }
         });
     }
-    
-    render () {
+
+    render() {
         return (
-            <form onSubmit={this.handleFormSubmit} >
-                <Input
-                    type={"text"}
-                    firstname={"First Name"}
-                    value={this.state.newAdult.firstName}
-                    placeholder={"Enter First Name"}
-                    handleChange={this.handleFirstName}
-                />{""}
-                {/* End newAdult firstName Field*/}
-                <Input
-                    type={"text"}
-                    lastName={"Last Name"}
-                    value={this.state.newAdult.lastName}
-                    placeholder={"Enter Last Name"}
-                    handleChange={this.handleLastName}
-                />{""}
-                {/* End newAdult lastName Field*/}
-                <Input
-                    type={"text"}
-                    email={"Email"}
-                    value={this.state.newAdult.email}
-                    placeholder={"Enter Valid Email"}
-                    handleChange={this.handleEmail}
-                />{""}
-                {/* End newAdult email Field*/}
-                <Input
-                    type={"text"}
-                    phoneNumber={"Phone"}
-                    value={this.state.newAdult.phoneNumber}
-                    placeholder={"Enter Phone Number"}
-                    handleChange={this.handlePhoneNumber}
-                />{""}
-                {/* End newAdult email Field*/}
-            
-                <Select
-                    title={"Children"}
-                    name={"Relationship to Enrolled Child(ren)"}
-                    options={this.state.childrenOptions}
-                    value={this.state.newAdult.children}
-                    placeholder={"Select Relationship"}
-                    handleChange={this.handleInput}
-                    />
-                {/* End Child Relationship Selection Field */}
-                <Button
-                    action={this.handleFormSubmit}
-                    type={"primary"}
-                    title={"Submit"}
-                    style={buttonStyle}
-                />
-                {/* End newAdult Submit */}
-                <Button
-                    action={this.handleClearForm}
-                    type={"secondary"}
-                    title={"Clear"}
-                    style={buttonStyle}
-                />
-                {/* End newAdult Clear Form */}
-            </form> 
+            <div className="container-wrapper">
+                <form onSubmit={this.handleFormSubmit} >
+                    <Input
+                        type={"text"}
+                        firstname={"First Name"}
+                        value={this.state.newAdult.firstName}
+                        placeholder={"Enter First Name"}
+                        handleChange={this.handleFirstName}
+                    />{""}
+                    {/* End newAdult firstName Field*/}
+                    <Input
+                        type={"text"}
+                        lastName={"Last Name"}
+                        value={this.state.newAdult.lastName}
+                        placeholder={"Enter Last Name"}
+                        handleChange={this.handleLastName}
+                    />{""}
+                    {/* End newAdult lastName Field*/}
+                    <Input
+                        type={"text"}
+                        email={"Email"}
+                        value={this.state.newAdult.email}
+                        placeholder={"Enter Valid Email"}
+                        handleChange={this.handleEmail}
+                    />{""}
+                    {/* End newAdult email Field*/}
+                    <Input
+                        type={"text"}
+                        phoneNumber={"Phone"}
+                        value={this.state.newAdult.phoneNumber}
+                        placeholder={"Enter Phone Number"}
+                        handleChange={this.handlePhoneNumber}
+                    />{""}
+                    {/* End newAdult email Field*/}
+                    <div className="selection">
+                        <Select
+                            title={"Relationship"}
+                            name={"Relationship to Enrolled Child(ren)"}
+                            options={this.state.childrenOptions}
+                            value={this.state.newAdult.children}
+                            placeholder={"Select Relationship"}
+                            handleChange={this.handleInput}
+                        />
+                        {/* End Child Relationship Selection Field */}
+                    </div>
+                    <div className="submit">
+                        <Button
+                            action={this.handleFormSubmit}
+                            type={"primary"}
+                            title={"Submit"}
+                            style={buttonStyle}
+                        />
+                        {/* End newAdult Submit */}
+                    </div>
+                    <div className="clear">
+                        <Button
+                            action={this.handleClearForm}
+                            type={"secondary"}
+                            title={"Clear"}
+                            style={buttonStyle}
+                        />
+                        {/* End newAdult Clear Form */}
+                    </div>
+                </form>
+            </div>
         );
     }
 }

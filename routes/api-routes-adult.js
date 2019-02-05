@@ -14,6 +14,16 @@ module.exports = function (app) {
       });
   });
 
+  app.get('/api/user', function (req, res) {
+    db.User.find({})
+    .then(function (dbUser) {
+      res.json(dbUser);
+    })
+    .catch(function (err) {
+      res.json(err);
+    });
+  });
+
   // POST route: create new db entry
   app.post('/api/adult', function (req, res) { //Works
     console.log('--->Adding Adult in mongo--->');
