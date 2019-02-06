@@ -26,7 +26,7 @@ import Volunteers from './Pages/Volunteers.js';
 import Search from './Pages/Search.js';
 
 /*== STYLING ==*/
-import './App.css';
+import '../src/css/App.css';
 
 // remove tap delay, essential for MaterialUI to work properly
 // injectTapEventPlugin();

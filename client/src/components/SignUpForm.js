@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { Card, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-import './SignUpForm.css';
+import '../css/signupform.css';
 
 // import { Input } from 'semantic-ui-react'
 // import { Card, Message } from 'semantic-ui-react'

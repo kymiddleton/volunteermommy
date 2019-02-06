@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import Auth from '../../Utils/Auth';
 import logo from '../../assets/whitelogo.png';
 // import { Link } from 'react-router-dom';
-import './header.css';
+import '../../css/header.css';
 
 
 class Header extends Component {
