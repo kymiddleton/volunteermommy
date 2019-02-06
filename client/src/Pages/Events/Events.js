@@ -8,7 +8,7 @@ class Events extends Component {
 
     state = {
         tabList: [
-            {tabName: 'Event 1', Component: NewEvent},
+            {tabName: 'Events Under Construction', Component: NewEvent},
             // {tabName: 'Event 2'},
             // {tabName: 'Event 3'},
             // {tabName: 'Event 4'},
@@ -18,8 +18,8 @@ class Events extends Component {
     render() {
         return (
             <div>
-                <h1>Events Section Under Construction</h1>
                 <Tabs tabList={this.state.tabList}/>
+                {/* <h1>Events Section Under Construction</h1> */}
             </div>
         )
     }

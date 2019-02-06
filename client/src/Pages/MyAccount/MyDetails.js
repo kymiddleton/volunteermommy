@@ -1,34 +1,35 @@
 import React from 'react';
 import AdultContainer from '../../containers/AdultContainer.js';
 import ChildContainer from '../../containers/ChildContainer.js';
-import UserDetails from './UserDetails';
+// import UserDetails from './UserDetails';
 // import RaisedButton from 'material-ui/RaisedButton';
+import AccountHolder from './AccountHolder';
 
 class MyDetails extends React.Component {
+
 
     render() {
         return (
             <div>
                 <div>
-                    <h1>Account Holder</h1>
-                    <input label="name" placeholder="name" />
-                    <input placeholder="full name" /><br />
-                    <input label="email" placeholder="email" />
-                    <input placeholder="email" /><br />
-                    {/* <UserDetails /> */}
+                <AccountHolder />
                 </div>
-                <br />
 
-                <h1>Volunteers</h1>
-                <button>Add New Volunteer</button>
-                <button>Delete Volunteer</button>
-                <br />
-                <AdultContainer />
-                <br />
+                <div>
+                    <h1>Volunteers</h1>
+                    <AdultContainer />
+                    <button>Add New Volunteer</button>
+                    <button>Delete Volunteer</button>
+                </div>
 
-                <h1>Child(ren)</h1>
-                <ChildContainer />
-            </div>
+                <div>
+                    <h1>Child(ren)</h1>
+                    <ChildContainer />
+                    <button>Add New Volunteer</button>
+                    <button>Delete Volunteer</button>
+                </div>
+
+            </div>    
         );
     }
 }
@@ -36,7 +37,7 @@ class MyDetails extends React.Component {
 export default MyDetails;
 
 
-// const MyDetails = (props) => (
+        // const MyDetails = (props) => (
 
 //     <div>
 //         <div>

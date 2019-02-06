@@ -15,14 +15,14 @@ const LoginForm = ({
     user,
     toggleAuthenticateStatus
 }) => (
-    <Card className="container">
+    <Card className="login-container">
         <form action="/" onSubmit={onSubmit}>
             <h2 className="card-heading">Login</h2>
 
             {successMessage && <p className="success-message">{successMessage}</p>}
             {errors.summary && <p className="error-message">{errors.summary}</p>}
 
-            <div className="field-line">
+            <div className="field-line-email">
                 <TextField
                     floatingLabelText="Enter Email"
                     name="email"
@@ -32,7 +32,7 @@ const LoginForm = ({
                 />
             </div>
 
-            <div className="field-line">
+            <div className="field-line-password">
                 <TextField
                     floatingLabelText="Enter Password"
                     type="password"

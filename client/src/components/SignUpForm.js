@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Card, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import './SignUpForm.css';
 
 // import { Input } from 'semantic-ui-react'
 // import { Card, Message } from 'semantic-ui-react'
@@ -17,14 +18,14 @@ const SignUpForm = ({
     errors,
     user,
 }) => (
-        <Card className="container">
+        <Card className="signup-container">
             <form action="/" onSubmit={onSubmit}>
                 <h2>Sign Up</h2>
 
                 {errors.summary && <p className="error-message">{errors.summary}</p>}
 
                 <div className="field-line">
-                    <TextField
+                    <TextField className="text"
                         floatingLabelText="Name"
                         name="name"
                         errorText={errors.name}

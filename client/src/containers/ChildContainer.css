@@ -26,7 +26,7 @@ form {
     margin-top: 20px;
 }
 
-input {
+/* input {
     display: grid;
     text-align: center;
     border-radius: 5px;
@@ -40,7 +40,7 @@ input {
     margin-left: 40px;
     margin-right: 20px;
     margin-bottom: 10px;
-}
+} */
 
 .selection {
     padding-top: 15px; 

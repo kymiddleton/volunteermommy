@@ -201,7 +201,7 @@ class AdultContainer extends Component {
                         />
                         {/* End newAdult Clear Form */}
                     </div>
-                </form>
+                </form> 
             </div>
         );
     }

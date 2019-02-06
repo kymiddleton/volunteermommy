@@ -26,8 +26,6 @@ class MyAccount extends Component {
         return (
             <div>
                 <Tabs tabList={this.state.tabList}/>
-                
-                
             </div>
         )
     }

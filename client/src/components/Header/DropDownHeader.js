@@ -24,7 +24,7 @@ class DropDownHeader extends React.Component {
     render() {
         return (
             <div>
-                <Menu>
+                <Menu inverted>
                     <Dropdown text='Dashboard' pointing className='link item'>
                     <Dropdown.Menu>
                         <Dropdown.Header>Dashboard Details</Dropdown.Header>
@@ -35,7 +35,7 @@ class DropDownHeader extends React.Component {
                         <Dropdown.Item as={ Link } to='/logout'>Logout</Dropdown.Item>
                     </Dropdown.Menu>
                     </Dropdown>
-                    <Menu.Item as={ Link } to='/login'>Login</Menu.Item>
+                    <Menu.Item position="right" as={ Link } to='/login'>Login</Menu.Item>
                     <Menu.Item as={ Link } to='/signup'>SignUp</Menu.Item>
                 </Menu>
             </div>

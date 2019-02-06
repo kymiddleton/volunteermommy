@@ -1,7 +1,6 @@
 import React from "react";
 
 const Input = (props) => {
-  //console.log(props.value);
   return (
     <div className="form-group">
       <label htmlFor={props.newAdult} className="form-label">
@@ -9,10 +8,6 @@ const Input = (props) => {
       </label>
       <input 
         id={props.id}
-        // firstname={props.firstname}
-        // lastname={props.lastName}
-        // email={props.email}
-        // phonenumber={props.phonenumber}
         name={props.name}
         input={props.input}
         value={props.value}
