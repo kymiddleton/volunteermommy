@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 /*== UI THEMES ==*/
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -60,11 +60,17 @@ class App extends Component {
             <LoggedOutRoute path="/login" component={LoginPage} toggleAuthenticateStatus={this.toggleAuthenticateStatus} />
             <LoggedOutRoute path="/signup" component={SignUpPage} />
             
-            <Route path="/myaccount" component={MyAccount} />
+            <PrivateRoute path="/myaccount" component={MyAccount} />
+            <PrivateRoute path="/volunteers" component={Volunteers} />
+            <PrivateRoute path="/events" component={Events} />
+            <PrivateRoute path="/search" component={Search} />
+            <PrivateRoute path="/logout" component={LogoutFunction} />
+
+            {/* <Route path="/myaccount" component={MyAccount} />
             <Route path="/volunteers" component={Volunteers} />
             <Route path="/events" component={Events} />
             <Route path="/search" component={Search} />
-            <Route path="/logout" component={LogoutFunction} />
+            <Route path="/logout" component={LogoutFunction} /> */}
           </div>
         </Router>
       </MuiThemeProvider>

@@ -84,6 +84,8 @@ class ChildContainer extends Component {
         $.post('/api/child', childData, { headers: { Authorization: `bearer ${token}` } })
             // $.post('/api/child', childData)
             .then(res => {
+                // trying to prompt confirmation msg to user on submit
+                this.setState({ childData: res.data})
                 console.log(res);
                 console.log(res.data);
             })
@@ -165,8 +167,12 @@ class ChildContainer extends Component {
                         {/* End newChild Clear Form */}
                     </div>
                 </form>
+                {this.state && this.state.childData && 
+                <div>{'Details entered successfully'}</div>
+                }
             </div>
         );
+    
     }
 }
 

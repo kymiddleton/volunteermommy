@@ -26,15 +26,16 @@ class DropDownHeader extends React.Component {
             <div>
                 <Menu inverted>
                     <Dropdown text='Dashboard' pointing className='link item'>
-                    <Dropdown.Menu>
-                        <Dropdown.Header>Dashboard Details</Dropdown.Header>
-                        <Dropdown.Item as={ Link } to='/myaccount'>My Account</Dropdown.Item>
-                        <Dropdown.Item as={ Link } to='/volunteers'>Volunteers</Dropdown.Item>
-                        <Dropdown.Item as={ Link } to='/events'>Events</Dropdown.Item>
-                        <Dropdown.Item as={ Link } to='/search'>Search</Dropdown.Item>
-                        <Dropdown.Item as={ Link } to='/logout'>Logout</Dropdown.Item>
-                    </Dropdown.Menu>
+                        <Dropdown.Menu>
+                            <Dropdown.Header>Dashboard Details</Dropdown.Header>
+                            <Dropdown.Item as={ Link } to='/myaccount'>My Account</Dropdown.Item>
+                            <Dropdown.Item as={ Link } to='/volunteers'>Volunteers</Dropdown.Item>
+                            <Dropdown.Item as={ Link } to='/events'>Events</Dropdown.Item>
+                            <Dropdown.Item as={ Link } to='/search'>Search</Dropdown.Item>
+                            {/* <Dropdown.Item as={ Link } to='/logout'>Logout</Dropdown.Item> */}
+                        </Dropdown.Menu>
                     </Dropdown>
+                    <Menu.Item as={ Link } to='/logout'>Logout</Menu.Item>
                     <Menu.Item position="right" as={ Link } to='/login'>Login</Menu.Item>
                     <Menu.Item as={ Link } to='/signup'>SignUp</Menu.Item>
                 </Menu>
