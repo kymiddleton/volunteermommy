@@ -19,11 +19,10 @@ class AdultContainer extends Component {
                 lastName: "",
                 email: "",
                 phoneNumber: "",
-                children: [],
-               
+                relationship: [],
             },
 
-            childrenOptions: ["Parent", "Grandparent", "Relative", "Caregiver"]
+            relationshipOptions: ["Parent", "Grandparent", "Relative", "Caregiver"]
         };
 
         this.handleFirstName = this.handleFirstName.bind(this);
@@ -133,7 +132,7 @@ class AdultContainer extends Component {
                 lastName: "",
                 email: "",
                 phoneNumber: "",
-                children: []
+                relationship: []
             }
         });
     }
@@ -178,7 +177,7 @@ class AdultContainer extends Component {
                         <Select
                             title={"Relationship"}
                             name={"Relationship to Enrolled Child(ren)"}
-                            options={this.state.childrenOptions}
+                            options={this.state.relationshipOptions}
                             value={this.state.newAdult.children}
                             placeholder={"Select Relationship"}
                             handleChange={this.handleInput}

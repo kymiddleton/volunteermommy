@@ -1,11 +1,27 @@
 import React from 'react';
-// import Auth from '../Utils/Auth';
+import Auth from '../../Utils/Auth';
+import API from '../../Utils/APIs'
 // import * as $ from 'axios';
 import AdultContainer from '../../containers/AdultContainer.js';
 import ChildContainer from '../../containers/ChildContainer.js';
+
+// import UserProfile from './UserProfile';
 // import UserDetails from './UserDetails';
 // import RaisedButton from 'material-ui/RaisedButton';
 // import AccountHolder from './AccountHolder';
+
+/*=== Component: UserContainer / Get route, show loading/errors, pass data down===*/
+/*=== Component: UserList: Search for active user and render data to User===*/
+/*=== Component: User: render user data with Add/Delete options. ===*/
+
+/*=== Create Get route for User Data ===*/
+
+/*=== Get User Data from API ===*/
+
+/*=== Code to List User Data in a method or inside render ===*/
+
+/*=== Logic to set active user in state ===*/
+
 
 // const loggedinUser = (id) => (
 //     this.setState({ loggedinUser: this.state.user.find( user => user.is === id)})
@@ -16,53 +32,76 @@ class MyDetails extends React.Component {
         super(props)
 
         this.state = {
-            user: null,
-            userData: [],
-            userId: '',
-            loggedinUser: {
-                id: '',
-                name: '',
-                email: ''
-            }
+            user: [],
+            // isLoggedIn: false
         }
-
-        // this.handleUser = this.handleUser.bind(this);
-
-        // {this.state.user.map(function(user) {
-        //     return <UserItem user={user}
-        // })}
     }
 
-    accountHolder = (e) => {
-        e.preventDefault();
-        this.props.getData().then(userData => {
-            this.setState({ userData: userData || [] });
-        })
-    }
-
-    // ComponentDidMount() {
-    //     const user = Auth.getUser();
+    // accountHolder = (e) => {
+    //     e.preventDefault();
+    //     console.log(localStorage.getItem('userId'), "this should be user id");
     //     const token = Auth.getToken();
-    //     $.get('/api/user/$user.id', user, { headers: { Authorization: `bearer ${token}` } })
+    //     let userData = this.state.loggedinUser;
+    //     userData.user = localStorage.getItem('userId');
+
+    //     const loggedIn = this;
+    //     API.user(token, userData)
     //         .then(res => {
-    //             console.log(res);
+    //             loggedIn.props.toggleChild(res.data._id);
     //             console.log(res.data);
     //         })
     // }
+
+    /*=== Get User Data from API ===*/
+    ComponentDidMount() {
+        const userData = Auth.getUser();
+        const token = Auth.getToken();
+
+        // let userData = this.state.isLoggedInUser;
+        // userData.user = localStorage.getItem('userId');
+        
+        // $.get('/api/user', user, { headers: { Authorization: `bearer ${token}` } })
+        API.user(token, userData)
+            .then(res => res.json())
+            .then(json => {
+                this.setState({
+                    isLoggedIn: true,
+                    user: json,
+                })
+                // console.log(res);
+                // console.log(res.data);
+            });
+    }
+
     render() {
-        const accountHolder = this.state.userData.map (userData =>  <div>{userData.name}, {userData.email}</div>)
+        const { isLoggedIn, user } = this.state;
+
+        if (!isLoggedIn) {
+            // return <div>{user.name} {user.email}</div>
+        }
+        // const accountHolder = this.state.userData.map (userData =>  <div>{userData.name}, {userData.email}</div>)
         return (
             
             <div>
-                <div>{ accountHolder }</div>
                 <div>
-                    {this.state.name}
+                    <ul>
+                        {user.map(user =>
+                            <li key={user.id}>
+                            Name: {user.name} | Email: {user.email}
+                            </li>
+                        )}
+                    </ul>
                 </div>
-
                 <div>
-                    {/* <AccountHolder /> */}
+                    {/* {userData.map((userData, userId) => {
+                        return 
+                        <div>
+                            <h1>{userData.name}</h1>
+                            <h1>{userData.email}</h1>
+                        </div>
+                    })} */}
+                       
                 </div>
-
                 <div>
                     <h1>Volunteers</h1>
                     <AdultContainer />
@@ -82,155 +121,3 @@ class MyDetails extends React.Component {
 }
 
 export default MyDetails;
-
-
-// $('#submitUser').on('click', function (event) {
-//     event.preventDefault();
-//     const userLogin = {
-//         email: $('#inputEmail1').val().trim(),
-//         username: $('#inputUsername').val().trim(),
-//         password: $('#inputPassword1').val().trim(),
-//         passwordConf: $('#inputPassword2').val().trim(),
-
-//     };
-//     console.log(userLogin)
-
-
-//     for (let key in userLogin) {
-//         if (userLogin[key] === '') {
-//             alert('Username or Password not valid!');
-//             return;
-//         }
-//     }
-
-//     if (userLogin.password !== userLogin.passwordConf) {
-//         var err = new Error('Passwords do not match.');
-//         err.status = 400;
-//         console.log(err)
-//         return (err)
-//     }
-
-//     else {
-//         $.ajax({
-//             url: '/api/user',
-//             method: 'POST',
-//             data: userLogin
-//         }).then(
-//             function (data) {
-//                 if (data.success === false) {
-//                     alert('There was a problem with your submission. Please check your entry and try again.');
-//                 }
-//                 else {
-
-//                     localStorage.setItem('username', userLogin.username)
-//                     localStorage.setItem('password', userLogin.password)
-//                     window.location.href = '/gittix';
-//                 }
-
-//             })
-
-//         const userProfile = function () {
-//             $('.fa-user-astronaut').on('click', function (event) {
-//                 $('.modal-body>').text(`${userLogin.email}`);
-//                 email = this.email
-//                 user = this.username
-//                 password = this.password
-//             })
-//         };
-//         userProfile()
-//     }
-
-// })
-
-// $('#submitExistingUser').on('click', function (event) {
-//     event.preventDefault();
-//     const userLogin = {
-//         username: $('#inputUsername').val().trim(),
-//         password: $('#inputPassword1').val().trim(),
-//     };
-
-//     for (let key in userLogin) {
-//         if (userLogin[key] === '') {
-//             alert('Username or Password not valid!');
-//             return;
-//         }
-//     }
-//     $.ajax({
-//         url: '/api/user',
-//         method: 'GET',
-//         data: userLogin
-//     }).then(
-//         function (data) {
-//             if (data.success === false) {
-//                 alert('There was a problem with your submission. Please check your entry and try again.');
-//             }
-//             else {
-//                 existingUser = localStorage.setItem('username', userLogin.username)
-//                 existingPassword = localStorage.setItem('password', userLogin.password)
-//                 window.location.href = '/gittix'
-//             }
-//         });
-// })
-
-// $('#user-info').on('click', function (event) {
-//     $("#changePass").prop('disabled', false)
-//     let renderUser = localStorage.getItem('username')
-//     let renderPass = localStorage.getItem('password')
-//     console.log('im here')
-//     let hiddenPass = "*".repeat(renderPass.length)
-//     $('#modaluser').text(renderUser);
-//     $('#modalbody').text(hiddenPass);
-//     $("#changePassbtn").remove();
-
-// })
-
-
-// $('#changePass').on('click', function () {
-//     $(this).prop('disabled', true);
-//     $('#changePass-one').append('<input class = "form-control" id = "newPassChange" placeholder="New Password"/>')
-//     $('#changePass-two').append('<input class = "form-control" id = "confirmPassChange" placeholder ="Confirm New Password"/>')
-//     $('#changePassword').append('<button id = "changePassbtn" "type = "button" class="btn btn-primary btnhide" data-dismiss="modal">Submit</button>')
-//     $(".btnhide").removeClass('hide')
-
-// })
-
-
-// $('body').on('click', '#changePassbtn', function () {
-
-//     const chngPass = {
-//         username: localStorage.getItem('username'),
-//         password: $('#newPassChange').val().trim(),
-//         passwordConf: $('#confirmPassChange').val().trim()
-//     };
-//     console.log(chngPass)
-//     if (chngPass.password !== chngPass.passwordConf) {
-//         var err = new Error('Passwords do not match.');
-//         err.status = 400;
-//         console.log(err)
-//         return (err)
-//     }
-//     else {
-//         $.ajax({
-//             url: '/api/user',
-//             method: 'PUT',
-//             data: chngPass
-//         }).then(function (newPass) {
-//             if (newPass === null) {
-//                 var err = new Error('Passwords do not match.');
-//                 err.status = 400;
-//                 console.log(err)
-//                 return (err)
-//             } else {
-//                 localStorage.setItem('password', chngPass.password)
-//                 $("#newPassChange").remove();
-//                 $("#confirmPassChange").remove();
-//             }
-//         })
-//     }
-// })
-
-
-// $('.log-out').on('click', function (event) {
-//     localStorage.clear()
-//     window.location.href = '/login'
-// })
