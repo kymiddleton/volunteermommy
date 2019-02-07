@@ -37,6 +37,10 @@ const AdultSchema = new Schema({
         message: '{VALUE} is not a valid 10 digit number!'
         }
     },
+    user: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+    }],
     children: [{
         type: Schema.Types.ObjectId,
         ref: 'Child',

@@ -1,0 +1,25 @@
+.ui.cards {
+    align-items: center;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ui.blue.card {
+    text-align: center;
+}
+
+.header {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.error-message {
+    padding: 0 16px;
+    color: tomato;
+}
+
+.success-message {
+    padding: 0 16px;
+    color: green;
+}

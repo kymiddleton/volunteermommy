@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Auth from '../Utils/Auth';
-import LoginForm from '../components/LoginForm.js';
 import API from '../Utils/APIs';
+import Auth from '../Utils/Auth';
+
+/*== COMPONENTS ==*/
+import LoginForm from '../components/LoginForm.js';
+
 
 class LoginPage extends React.Component {
     // set the initial component state
@@ -46,7 +49,8 @@ class LoginPage extends React.Component {
         API.login({ email, password }).then(res => {
             // save the token
             Auth.authenticateUser(res.data.token);
-
+            console.log(res, "the is reponse object from api")
+            localStorage.setItem("userId", res.data.user.id);
             // update authenticated state
             this.props.toggleAuthenticateStatus()
 
@@ -54,7 +58,7 @@ class LoginPage extends React.Component {
             this.props.history.push('/dashboard');
 
         }).catch(( { res }) => {
-            console.log("Response: "+res.data)
+            // console.log("Response: "+res.data)
             const errors = res.data.errors ? res.data.errors : {};
             // console.log(response);
             errors.summary = res.data.message;
@@ -63,7 +67,6 @@ class LoginPage extends React.Component {
                 errors
             });
         });
-
     }
 
     /**

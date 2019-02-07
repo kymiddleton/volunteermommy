@@ -19,7 +19,8 @@ class AdultContainer extends Component {
                 lastName: "",
                 email: "",
                 phoneNumber: "",
-                children: []
+                children: [],
+               
             },
 
             childrenOptions: ["Parent", "Grandparent", "Relative", "Caregiver"]
@@ -113,9 +114,10 @@ class AdultContainer extends Component {
 
     handleFormSubmit(event) {
         event.preventDefault();
+        console.log(localStorage.getItem('userId'), "this should be user id");
         const token = Auth.getToken();
         let adultData = this.state.newAdult;
-        console.log(adultData);
+        adultData.user = localStorage.getItem('userId');
         const self = this;
         API.adult(token, adultData)
             .then(res => {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import Auth from '../../Utils/Auth';
-import logo from '../../assets/whitelogo.png';
+// import logo from '../../assets/whitelogo.png';
+import logo from '../../assets/blacklogo.png';
 // import { Link } from 'react-router-dom';
 import '../../css/header.css';
 
@@ -24,7 +25,8 @@ class Header extends Component {
   render() {
     return (
       <div className="logoheader">
-        <img src={logo} alt="whitelogo" className="logo"></img>
+        {/* <img src={logo} alt="whitelogo" className="logo"></img> */}
+        <img src={logo} alt="blacklogo" className="logo"></img>
 
         <nav>
           {/* <li>

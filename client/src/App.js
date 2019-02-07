@@ -15,7 +15,7 @@ import Header from './components/Header/Header';
 import DropDownHeader from './components/Header/DropDownHeader';
 
 /*== PAGES ==*/
-import HomePage from './components/HomePage';
+import HomePage from './Pages/HomePage';
 import LoginPage from './Pages/LoginPage.js';
 import LogoutFunction from './Pages/LogoutFunction.js';
 import SignUpPage from './Pages/SignUpPage.js';

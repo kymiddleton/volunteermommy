@@ -85,7 +85,9 @@ router.post('/signup', (req, res, next) => {
     });
   }
 
-  return passport.authenticate('local-signup', (err) => {
+  return passport.authenticate('local-signup', (err, user) => {
+    console.log("in local sign up")
+    console.log("user ---", user)
     if (err) {
       if (err.name === 'MongoError' && err.code === 11000) {
         // the 11000 Mongo code is for a duplication email error
@@ -98,7 +100,7 @@ router.post('/signup', (req, res, next) => {
           }
         });
       }
-
+      console.log(user, "---- this should be user");
       return res.status(400).json({
         success: false,
         message: 'Could not process the form.'
@@ -123,7 +125,6 @@ console.log("Validation Result: "+validationResult);
     });
   }
 
-
   return passport.authenticate('local-login', (err, token, userData) => {
     if (err) {
       if (err.name === 'IncorrectCredentialsError') {
@@ -138,7 +139,6 @@ console.log("Validation Result: "+validationResult);
         message: 'Could not process the form.'
       });
     }
-
 
     return res.json({
       success: true,

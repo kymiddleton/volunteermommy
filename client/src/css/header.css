@@ -2,19 +2,24 @@
     /* width: 100%; */
     /* width: 98%; */
     /* max-width: 960px; */
-    height: 115px;
-    text-align: left;
-    background-color: #0654b4;
-    padding-left: 35px;
-    padding-top: 7px;
-    padding-bottom: 25px;
+    /* height: 115px; */
+    height: 100px;
+    /* text-align: left; */
+    text-align: center;
+    background-image: linear-gradient(to right, #0654b4 12%, #b9d3fa 80%);
+    /* background-color: #0654b4; */
+    /* padding-left: 35px; */
+    /* padding-top: 7px; */
+    padding-top: 5px;
+    /* padding-bottom: 25px; */
     /* font: 40px; */
-    text-align: left;
+    /* text-align: left; */
 }
   
 .logo {
     width: auto;
-    height: 100px;
+    /* height: 100px; */
+    height: 90px;
 }
 
 nav {
@@ -37,14 +42,6 @@ nav li {
     display: inline-block;
     margin: 0 10px 0 0;
 }
-
-/* .div {
-    margin: 0 auto;
-    padding: 0;
-    list-style-type: none;
-    display: inline-block;
-    margin: 0 10px 0 0;
-} */
 
 nav a {
     color: #fff;

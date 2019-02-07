@@ -22,6 +22,7 @@ a:hover {
     padding: 10px 15px;
     margin-bottom: 50px;
 }
+
 .top-bar::after {
     content: '';
     display: block;
@@ -45,15 +46,19 @@ a:hover {
 .signup-container {
     margin: 0 auto;
     text-align: center;
-    width: 300px;
+    width: 350px;
+}
+
+h2 {
+    padding-top: 25px;
 }
 
 .card-heading {
-    padding: 16px;
+    padding: 25px;
 }
 
 .field-line, .button-line {
-    padding: 16px;
+    padding: 10px;
 }
 
 .error-message {
