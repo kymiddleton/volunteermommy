@@ -1,8 +1,8 @@
-.ui.cards {
-    align-items: center;
-    margin-top: 25px;
-    margin-left: auto;
-    margin-right: auto;   
+.ui.centered.card {
+    /* align-items: center; */
+    margin-top: 50px;
+    /* margin-left: auto; */
+    /* margin-right: auto;    */
 }
 
 .ui.blue.card {
