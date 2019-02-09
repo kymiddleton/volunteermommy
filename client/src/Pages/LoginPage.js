@@ -49,7 +49,7 @@ class LoginPage extends React.Component {
         API.login({ email, password }).then(res => {
             // save the token
             Auth.authenticateUser(res.data.token);
-            console.log(res, "the is reponse object from api")
+            console.log(res, "the reponse object from api")
             localStorage.setItem("userId", res.data.user.id);
             // update authenticated state
             this.props.toggleAuthenticateStatus()

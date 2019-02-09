@@ -1,6 +1,6 @@
-/* .container-wrapper {
-    width: 350px;
-    height: 300px;
+.child-wrapper {
+    width: 850px;
+    height: 150px;
     margin-left: auto;
     margin-right: auto;
     border: 2px solid transparent;
@@ -8,10 +8,10 @@
     background-image: linear-gradient(white, white), radial-gradient(circle at top left, #0714b6, #080665d1);
     background-origin: border-box;
     background-clip: content-box, border-box;
-} */
+}
 
 h1 {
-    font-size: 30px;
+    font-size: 18px;
     font-weight: 300;
     color: #0654b4;
     padding-top: 15px;
@@ -19,9 +19,13 @@ h1 {
     text-align: center;
 }
 
-form {
+.label {
+    align-content: left;
+}
+
+/* form {
     display: block;
     text-align: center;
     align-items: center;
     margin-top: 20px;
-}
+} */

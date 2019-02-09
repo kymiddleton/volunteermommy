@@ -1,0 +1,17 @@
+.ui.tab {
+    height: 600px;
+}
+
+.account-holder {
+    width: 30%;
+    /* float: left; */
+}
+
+.label {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.name, .email{
+    font-weight: 400;
+}

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Auth from '../Utils/Auth';
 import * as $ from 'axios';
-import './ChildContainer.css';
+import { Form } from 'semantic-ui-react';
+import '../css/ChildContainer.css';
 
 /* Import Components */
 import Input from "../components/Input";
@@ -119,54 +120,62 @@ class ChildContainer extends Component {
 
     render() {
         return (
-            <div className="container-wrapper">
-                <form onSubmit={this.handleFormSubmit}>
-                    <Input
-                        type={"text"}
-                        firstname={"First Name"}
-                        value={this.state.newChild.firstName}
-                        placeholder={"Enter First Name"}
-                        handleChange={this.handleFirstName}
-                    />{""}
-                    {/* End newChild firstName Field*/}
-                    <Input
-                        type={"text"}
-                        lastName={"Last Name"}
-                        value={this.state.newChild.lastName}
-                        placeholder={"Enter Last Name"}
-                        handleChange={this.handleLastName}
-                    />{""}
-                    {/* End newChild lastName Field*/}
-                    <div className="selection">
-                        <SelectTeacher
-                            title={"Teacher"}
-                            name={"Teacher"}
-                            options={this.state.teacherOptions}
-                            value={this.state.newChild.teacher}
-                            placeholder={"Select Teacher"}
-                            handleChange={this.handleTeacherInput}
+            <div className="child-wrapper">
+                <Form onSubmit={this.handleFormSubmit}>
+
+                    <Form.Group inline>
+                        <Input
+                            type={"text"}
+                            firstname={"First Name"}
+                            value={this.state.newChild.firstName}
+                            placeholder={"Enter First Name"}
+                            handleChange={this.handleFirstName}
                         />{""}
-                        {/* End Teacher Selection Field */}
-                    </div>
-                    <div className="submit">
-                        <Button
-                            action={this.handleFormSubmit}
-                            type={"primary"}
-                            title={"Submit"}
-                            style={buttonStyle}
+                        {/* End newChild firstName Field*/}
+                        <Input
+                            type={"text"}
+                            lastName={"Last Name"}
+                            value={this.state.newChild.lastName}
+                            placeholder={"Enter Last Name"}
+                            handleChange={this.handleLastName}
                         />{""}
-                        {/* End newChild Submit */}
-                    </div>
-                    <div className="clear">
-                        <Button
-                            action={this.handleClearForm}
-                            type={"secondary"}
-                            title={"Clear"}
-                            style={buttonStyle}
-                        />{""}
-                        {/* End newChild Clear Form */}
-                    </div>
-                </form>
+                        {/* End newChild lastName Field*/}
+                    </Form.Group>
+                    <Form.Group>
+                        <div className="selection">
+                            <SelectTeacher
+                                title={"Select Teacher"}
+                                name={"Select Teacher"}
+                                options={this.state.teacherOptions}
+                                value={this.state.newChild.teacher}
+                                placeholder={"Select Teacher"}
+                                handleChange={this.handleTeacherInput}
+                            />{""}
+                            {/* End Teacher Selection Field */}
+                        </div>
+                    </Form.Group>
+
+                    <Form.Group>
+                        <div className="submit">
+                            <Button
+                                action={this.handleFormSubmit}
+                                type={"primary"}
+                                title={"Submit"}
+                                style={buttonStyle}
+                            />{""}
+                            {/* End newChild Submit */}
+                        </div>
+                        <div className="clear">
+                            <Button
+                                action={this.handleClearForm}
+                                type={"secondary"}
+                                title={"Clear"}
+                                style={buttonStyle}
+                            />{""}
+                            {/* End newChild Clear Form */}
+                        </div>
+                    </Form.Group>
+                </Form>
                 {this.state && this.state.childData && 
                 <div>{'Details entered successfully'}</div>
                 }

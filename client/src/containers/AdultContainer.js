@@ -182,7 +182,6 @@ class AdultContainer extends Component {
                     </Form.Group>
 
                     <Form.Group inline>
-                        
                         <div className="selection">
                             <Select
                                 title={"Relationship"}

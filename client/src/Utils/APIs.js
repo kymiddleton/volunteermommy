@@ -10,8 +10,10 @@ export default {
       axios.get('/api/dashboard', { headers: { Authorization: `bearer ${token}` } }),
    adult: (token, adultData) =>
       axios.post('/api/adult', adultData, { headers: { Authorization: `bearer ${token}` } }),
-   user: (token, userData) =>
-      axios.get('/api/user', userData, { headers: { Authorization: `bearer ${token}` } }),
+   user: (token) =>
+      axios.get('/api/user',  { headers: { Authorization: `bearer ${token}` } }),
+   userById: (token, id) =>
+      axios.get(`/api/user/${id}`,  { headers: { Authorization: `bearer ${token}` } }),
    // teacher: token =>
    //    axios.get('/api/teacher', { headers: { Authorization: `bearer ${token}` } })
 

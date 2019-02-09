@@ -61,6 +61,7 @@ app.use('/api', apiRoutes);
 require('./routes/api-routes-adult.js')(app);
 require('./routes/api-routes-child.js')(app);
 require('./routes/api-routes-teacher.js')(app);
+require('./routes/api-routes-user.js')(app);
 
 // Send every request to the React app
 // Define any API routes before this runs

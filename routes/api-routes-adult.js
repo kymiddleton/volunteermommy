@@ -14,6 +14,31 @@ module.exports = function (app) {
       });
   });
 
+  // GET: retrieve Adult data that matches logged-in user
+  app.get('/api/adult/volunteer', function (req, res) { 
+    db.Adult.find({ user: [req.body.userId]})
+    // console.log(req.body.userId)
+      .then(function (dbAdult) {
+        res.json(dbAdult);
+      })
+      .catch(function (err) {
+        res.json(err);
+      });
+  });
+
+  app.get('/api/adult/uservolunteer', function (req, res) { 
+    db.Adult.aggregate([
+      {"$lookup" : {
+        "localfield" : "user",
+        "from" : "adult",
+        "foreignField" : "_id",
+        "as" : "uservolunteer"
+      }},
+      { "$unwind" : "$uservolunteer" }
+    ])
+  });
+
+
   // POST route: create new db entry
   app.post('/api/adult', function (req, res) { //Works
     console.log('--->Adding Adult in mongo--->');
