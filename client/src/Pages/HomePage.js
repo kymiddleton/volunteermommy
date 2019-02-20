@@ -21,9 +21,21 @@ class HomePage extends React.Component {
                 <Card.Content>
                     <Card.Header>Volunteer Mommy</Card.Header>
                     {Auth.isUserAuthenticated() ? (
-                        <Card.Meta style={{ fontSize: '16px', color: 'green' }}>Welcome! You are logged in.</Card.Meta>
+                        <Card.Meta style={{ fontSize: '16px', color: 'green' }}>
+                            <h1>
+                                Welcome! You are logged in.
+                            </h1>
+                            <p>
+                                Add text here about Volunteer Mommy. 
+                            </p>
+                        
+                        </Card.Meta>
                     ) : (
-                            <Card.Meta style={{ fontSize: '16px', color: 'red' }}>You are not logged in.</Card.Meta>
+                            <Card.Meta style={{ fontSize: '16px', color: 'red' }}>
+                                <h1>
+                                    You are not logged in.
+                                </h1>
+                            </Card.Meta>
                         )}
                 </Card.Content>
             </Card >
